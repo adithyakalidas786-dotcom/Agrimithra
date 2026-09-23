@@ -1,0 +1,4504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>AgriMithra | Smart Agricultural Decision & Direct Selling Platform</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --green:#13783f;
+    --green2:#20a85b;
+    --lime:#9ae64f;
+    --dark:#06351f;
+    --dark2:#09291b;
+    --cream:#f7fbf4;
+    --bg:#eef6ed;
+    --card:#ffffff;
+    --text:#183526;
+    --muted:#718078;
+    --border:#dfe9df;
+    --blue:#2678ef;
+    --purple:#7a46ed;
+    --orange:#f59b22;
+    --red:#d9383a;
+    --shadow:0 15px 45px rgba(18,70,37,.10);
+    --radius:20px;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(143,216,94,.14),transparent 25%),
+        radial-gradient(circle at 90% 20%,rgba(77,180,128,.12),transparent 25%),
+        linear-gradient(135deg,#f5faf3,#edf6ee);
+    color:var(--text);
+    min-height:100vh;
+}
+
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:268px;
+    height:100vh;
+    padding:18px 14px;
+    background:
+        radial-gradient(circle at 90% 5%,rgba(169,231,93,.25),transparent 25%),
+        radial-gradient(circle at 10% 70%,rgba(44,158,97,.18),transparent 35%),
+        linear-gradient(180deg,#06391f,#042919 72%,#021b11);
+    color:white;
+    z-index:100;
+    overflow-y:auto;
+    box-shadow:8px 0 35px rgba(0,0,0,.08);
+}
+
+.brand{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    padding:8px 10px 16px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    margin-bottom:10px;
+}
+
+.logo{
+    width:48px;
+    height:48px;
+    flex:none;
+    display:grid;
+    place-items:center;
+    border-radius:14px;
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.17),rgba(255,255,255,.05));
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 12px 25px rgba(0,0,0,.12);
+}
+
+.logo svg{
+    width:40px;
+    height:40px;
+}
+
+.brand-title{
+    font-family:Poppins;
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:-.5px;
+}
+
+.brand-subtitle{
+    font-size:8px;
+    letter-spacing:1.2px;
+    color:#a7cdb1;
+    margin-top:2px;
+}
+
+.menu-title{
+    color:#6e9b7d;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:1.7px;
+    padding:12px 12px 5px;
+}
+
+.nav-btn{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:10px 13px;
+    margin:3px 0;
+    border-radius:12px;
+    background:transparent;
+    color:#c6ddce;
+    text-align:left;
+    font-size:12px;
+    font-weight:600;
+}
+
+.nav-btn:hover{
+    background:rgba(255,255,255,.08);
+    color:white;
+}
+
+.nav-btn.active{
+    background:linear-gradient(90deg,#31a849,#14733c);
+    color:white;
+    box-shadow:0 9px 25px rgba(20,140,63,.23);
+    border-left:3px solid var(--lime);
+}
+
+.nav-icon{
+    width:22px;
+    text-align:center;
+    font-size:15px;
+}
+
+.nav-badge{
+    margin-left:auto;
+    padding:2px 7px;
+    border-radius:10px;
+    background:rgba(154,230,79,.2);
+    color:var(--lime);
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:.5px;
+}
+
+.sidebar-bottom{
+    margin-top:16px;
+    padding-bottom:12px;
+}
+
+.voice-nav{
+    width:100%;
+    padding:12px;
+    border-radius:13px;
+    color:white;
+    background:
+        linear-gradient(135deg,#2cb94f,#168d5a);
+    border:1px solid rgba(255,255,255,.15);
+    font-weight:800;
+    font-size:12px;
+    box-shadow:0 12px 28px rgba(31,167,80,.22);
+}
+
+.sidebar-footer{
+    margin-top:14px;
+    padding:12px;
+    border-radius:14px;
+    color:#9fbba8;
+    background:rgba(255,255,255,.05);
+    font-size:9px;
+    line-height:1.6;
+}
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main{
+    margin-left:268px;
+    min-height:100vh;
+}
+
+.topbar{
+    height:72px;
+    position:sticky;
+    top:0;
+    z-index:80;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 26px;
+    background:rgba(250,253,249,.94);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);
+}
+
+.search{
+    width:420px;
+    position:relative;
+}
+
+.search input{
+    width:100%;
+    padding:11px 18px 11px 42px;
+    border:1px solid var(--border);
+    background:#f4f8f3;
+    border-radius:12px;
+    outline:none;
+    font-size:12px;
+}
+
+.search-icon{
+    position:absolute;
+    top:10px;
+    left:14px;
+    font-size:16px;
+}
+
+.top-actions{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.api-status-pill{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#eaf6ec;
+    border:1px solid #cce8d1;
+    font-size:10px;
+    font-weight:700;
+    color:#1b743e;
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#2ecc71;
+    box-shadow:0 0 8px #2ecc71;
+}
+
+.icon-btn{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+    background:#f2f7f0;
+    border:1px solid var(--border);
+    display:grid;
+    place-items:center;
+    font-size:14px;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:5px 11px 5px 6px;
+    border:1px solid var(--border);
+    background:#f2f7f0;
+    border-radius:12px;
+}
+
+.avatar{
+    width:32px;
+    height:32px;
+    display:grid;
+    place-items:center;
+    border-radius:9px;
+    background:#dff0dc;
+    font-size:16px;
+}
+
+/* =====================================================
+   CONTENT & SHARED COMPONENTS
+===================================================== */
+
+.container{
+    max-width:1600px;
+    margin:auto;
+    padding:24px;
+}
+
+.page-title{
+    margin-bottom:20px;
+}
+
+.page-title small{
+    font-size:9px;
+    letter-spacing:1.6px;
+    color:var(--green2);
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.page-title h2{
+    font-family:Poppins;
+    margin-top:3px;
+    font-size:26px;
+    color:var(--dark);
+}
+
+.page-title p{
+    margin-top:4px;
+    color:var(--muted);
+    font-size:12px;
+    max-width:850px;
+    line-height:1.5;
+}
+
+.hackathon-banner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 18px;
+    margin-bottom:20px;
+    border-radius:14px;
+    background:linear-gradient(90deg,#0a3b22,#156338);
+    color:white;
+    font-size:11px;
+    box-shadow:0 8px 24px rgba(10,59,34,.12);
+}
+
+.hackathon-banner b{
+    color:var(--lime);
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:360px;
+    position:relative;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:1.45fr .75fr;
+    gap:24px;
+    padding:34px;
+    color:white;
+    border-radius:26px;
+    background:
+        radial-gradient(circle at 82% 17%,rgba(184,236,101,.28),transparent 24%),
+        radial-gradient(circle at 50% 100%,rgba(85,197,104,.22),transparent 34%),
+        linear-gradient(120deg,#073b20,#157443 60%,#0d5a32);
+    box-shadow:0 24px 60px rgba(8,75,36,.20);
+    margin-bottom:22px;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    right:-130px;
+    bottom:-150px;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    border:70px solid rgba(255,255,255,.06);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.hero-badge{
+    width:max-content;
+    padding:6px 12px;
+    border-radius:30px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.15);
+    color:#c8f49a;
+    font-size:10px;
+    font-weight:800;
+}
+
+.hero h1{
+    font-family:Poppins;
+    font-size:44px;
+    line-height:1.08;
+    margin:16px 0 10px;
+    letter-spacing:-1.2px;
+}
+
+.hero h1 span{
+    color:#a7ed57;
+}
+
+.hero p{
+    max-width:640px;
+    color:#d3e6d9;
+    line-height:1.6;
+    font-size:12px;
+}
+
+.hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:22px;
+}
+
+.primary{
+    background:linear-gradient(135deg,#8fe64e,#52bb42);
+    color:white;
+    padding:11px 18px;
+    border-radius:11px;
+    font-weight:800;
+    font-size:12px;
+    box-shadow:0 10px 22px rgba(56,160,58,.22);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+}
+
+.primary:hover{
+    transform:translateY(-1px);
+    box-shadow:0 14px 26px rgba(56,160,58,.28);
+}
+
+.secondary{
+    padding:11px 17px;
+    border-radius:11px;
+    color:#12653a;
+    background:white;
+    font-weight:800;
+    font-size:12px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+}
+
+.secondary:hover{
+    background:#f4fbf2;
+}
+
+.hero-ai{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    z-index:3;
+}
+
+.ai-card{
+    width:100%;
+    max-width:360px;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.97);
+    color:var(--text);
+    box-shadow:0 30px 60px rgba(0,0,0,.16);
+}
+
+.ai-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.ai-head b{
+    font-family:Poppins;
+    font-size:13px;
+}
+
+.live{
+    font-size:9px;
+    font-weight:800;
+    color:#238b43;
+}
+
+.ai-crop{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:10px;
+}
+
+.ai-price{
+    color:#15713d;
+    font-size:28px;
+    font-weight:800;
+    margin-top:4px;
+}
+
+.ai-price small{
+    color:#369756;
+    font-size:10px;
+}
+
+.chart{
+    height:75px;
+    margin:10px 0;
+    display:flex;
+    align-items:end;
+    gap:6px;
+}
+
+.chart span{
+    flex:1;
+    min-height:12px;
+    border-radius:5px 5px 1px 1px;
+    background:linear-gradient(#95e45d,#3c9c48);
+}
+
+.ai-tip{
+    padding:11px;
+    background:#edf8e9;
+    border-radius:10px;
+    font-size:10px;
+    line-height:1.5;
+}
+
+/* =====================================================
+   QUICK STATS
+===================================================== */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+    margin:20px 0;
+}
+
+.stat{
+    background:white;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    border-radius:16px;
+    padding:16px;
+}
+
+.stat-top{
+    display:flex;
+    justify-content:space-between;
+}
+
+.stat-icon{
+    width:36px;
+    height:36px;
+    display:grid;
+    place-items:center;
+    border-radius:10px;
+    background:#edf7eb;
+    font-size:16px;
+}
+
+.stat-label{
+    font-size:9px;
+    color:#829087;
+    font-weight:800;
+    letter-spacing:.5px;
+}
+
+.stat-value{
+    display:block;
+    font-size:22px;
+    font-weight:800;
+    margin:6px 0 3px;
+    color:var(--dark);
+}
+
+.stat-growth{
+    font-size:9px;
+    color:#258243;
+    font-weight:600;
+}
+
+/* =====================================================
+   CARDS & GRIDS
+===================================================== */
+
+.card{
+    padding:20px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    margin-bottom:18px;
+}
+
+.card-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.card-header h3{
+    font-family:Poppins;
+    font-size:16px;
+    color:var(--dark);
+}
+
+.card-header small{
+    color:var(--muted);
+    font-size:9px;
+}
+
+.two-col{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:18px;
+}
+
+.three-col{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+/* =====================================================
+   DECISION BADGES & TAGS
+===================================================== */
+
+.badge-sell-now{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#e1f8e8;
+    color:#177d3c;
+    border:1px solid #b7ecc5;
+    font-weight:800;
+    font-size:11px;
+}
+
+.badge-wait{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#fff5db;
+    color:#b37402;
+    border:1px solid #ffe39a;
+    font-weight:800;
+    font-size:11px;
+}
+
+.badge-buyer{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#eef2ff;
+    color:#3c50e0;
+    border:1px solid #d0d7ff;
+    font-weight:800;
+    font-size:11px;
+}
+
+.factor-tag{
+    display:inline-block;
+    padding:3px 8px;
+    border-radius:6px;
+    background:#eaf4e8;
+    color:#256d39;
+    font-size:9px;
+    font-weight:700;
+    margin:2px 3px 2px 0;
+}
+
+/* =====================================================
+   DECISION CENTER COMPONENT STYLES
+===================================================== */
+
+.decision-form-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-bottom:14px;
+}
+
+.decision-result-panel{
+    padding:20px;
+    border-radius:18px;
+    background:linear-gradient(145deg,#f4fbf2,#ebf7e8);
+    border:1px solid #d6ebd2;
+    margin-top:16px;
+}
+
+.decision-header-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    padding-bottom:14px;
+    border-bottom:1px dashed #b9dcbc;
+}
+
+.decision-price-display{
+    font-size:32px;
+    font-weight:800;
+    color:#126c36;
+    margin:4px 0;
+}
+
+.decision-metrics-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:16px 0;
+}
+
+.decision-metric-box{
+    padding:12px;
+    background:white;
+    border-radius:12px;
+    border:1px solid #dbe8da;
+}
+
+.decision-metric-box small{
+    font-size:8px;
+    color:var(--muted);
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.decision-metric-box b{
+    display:block;
+    font-size:16px;
+    color:var(--dark);
+    margin-top:3px;
+}
+
+.reasons-box{
+    margin-top:12px;
+    padding:12px 14px;
+    background:white;
+    border-radius:12px;
+    border:1px solid #dbe8da;
+}
+
+.reasons-box ul{
+    margin-left:18px;
+    margin-top:6px;
+    font-size:11px;
+    color:#2b4737;
+    line-height:1.6;
+}
+
+/* =====================================================
+   PROFIT LOSS SIMULATOR STYLES
+===================================================== */
+
+.sim-chain-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-top:16px;
+}
+
+.sim-card-traditional{
+    padding:20px;
+    border-radius:18px;
+    background:#fffcfb;
+    border:1px solid #f6dedc;
+}
+
+.sim-card-direct{
+    padding:20px;
+    border-radius:18px;
+    background:#f4fbf2;
+    border:2px solid #6ac466;
+    position:relative;
+}
+
+.sim-card-direct:before{
+    content:"⭐ RECOMMENDED DIRECT TRADE";
+    position:absolute;
+    top:-10px;
+    right:20px;
+    background:#177d3c;
+    color:white;
+    font-size:8px;
+    font-weight:800;
+    padding:3px 8px;
+    border-radius:10px;
+}
+
+.chain-step{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:9px 12px;
+    background:white;
+    border-radius:10px;
+    margin-bottom:8px;
+    border:1px solid var(--border);
+    font-size:11px;
+}
+
+.sim-gain-highlight{
+    margin-top:16px;
+    padding:16px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#0a4427,#167c42);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.sim-gain-highlight b{
+    font-size:24px;
+    color:var(--lime);
+}
+
+/* =====================================================
+   SMART BUYER MATCH STYLES
+===================================================== */
+
+.buyer-card{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:15px;
+    border-radius:14px;
+    background:white;
+    border:1px solid var(--border);
+    margin-bottom:10px;
+    transition:.2s;
+}
+
+.buyer-card:hover{
+    border-color:#92cb9b;
+    box-shadow:0 8px 24px rgba(20,110,50,.08);
+}
+
+.buyer-score-badge{
+    min-width:75px;
+    text-align:center;
+    padding:8px 6px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#e9f8ec,#cbf2d3);
+    border:1px solid #a3e2b0;
+    color:#136c35;
+    font-weight:800;
+    font-size:13px;
+}
+
+/* =====================================================
+   SHARED TRANSPORT STYLES
+===================================================== */
+
+.transport-savings-banner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 20px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#eef9ed,#dbf4d8);
+    border:1px solid #b8e9b3;
+    margin-bottom:16px;
+}
+
+.transport-savings-banner b{
+    font-size:22px;
+    color:#126c36;
+}
+
+.pool-card{
+    padding:16px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:white;
+    margin-bottom:12px;
+}
+
+/* =====================================================
+   OFFERS & PRODUCTS
+===================================================== */
+
+.offer{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 0;
+    border-bottom:1px solid #edf1ed;
+}
+
+.offer:last-child{
+    border-bottom:0;
+}
+
+.offer-avatar{
+    width:42px;
+    height:42px;
+    display:grid;
+    place-items:center;
+    background:#eff7ed;
+    border-radius:12px;
+    font-size:20px;
+}
+
+.offer-info{
+    flex:1;
+}
+
+.offer-info b{
+    font-size:12px;
+}
+
+.offer-info small{
+    display:block;
+    color:var(--muted);
+    font-size:9px;
+    margin-top:3px;
+}
+
+.offer-price{
+    font-size:13px;
+    font-weight:800;
+    color:#16703b;
+}
+
+.accept{
+    padding:7px 12px;
+    border-radius:9px;
+    background:#e3f6e7;
+    color:#24763e;
+    font-size:10px;
+    font-weight:800;
+}
+
+.accept:hover{
+    background:#24763e;
+    color:white;
+}
+
+.tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-bottom:16px;
+}
+
+.tab{
+    padding:7px 13px;
+    border-radius:30px;
+    background:#edf3ec;
+    color:#617066;
+    font-size:10px;
+    font-weight:700;
+}
+
+.tab.active{
+    background:#176d3e;
+    color:white;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.product{
+    overflow:hidden;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:16px;
+    transition:.2s;
+}
+
+.product:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--shadow);
+}
+
+.product-image{
+    height:135px;
+    display:grid;
+    place-items:center;
+    position:relative;
+    font-size:55px;
+    background:
+        radial-gradient(circle at 40% 25%,rgba(255,255,255,.7),transparent 20%),
+        linear-gradient(135deg,#ecf7e9,#deefdc);
+}
+
+.product-tag{
+    position:absolute;
+    left:10px;
+    top:10px;
+    padding:4px 8px;
+    border-radius:20px;
+    background:white;
+    color:#237841;
+    font-size:8px;
+    font-weight:800;
+}
+
+.product-body{
+    padding:13px;
+}
+
+.product-body h3{
+    font-size:13px;
+}
+
+.product-location{
+    color:var(--muted);
+    font-size:9px;
+    margin:3px 0;
+}
+
+.product-qty{
+    color:#748179;
+    font-size:9px;
+}
+
+.product-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:10px;
+}
+
+.price{
+    color:#16703b;
+    font-size:17px;
+    font-weight:800;
+}
+
+.price small{
+    font-size:8px;
+}
+
+.buy-btn{
+    padding:7px 11px;
+    border-radius:8px;
+    background:#176e3d;
+    color:white;
+    font-size:9px;
+    font-weight:800;
+}
+
+.offer-btn{
+    padding:7px 10px;
+    border-radius:8px;
+    background:#edf5ec;
+    color:#216b3e;
+    font-size:9px;
+    font-weight:800;
+}
+
+.offer-btn:hover{
+    background:#e0ede0;
+}
+
+/* =====================================================
+   VOICE BOX & MODALS
+===================================================== */
+
+.voice-box{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:16px;
+    border:1px dashed #87b977;
+    border-radius:16px;
+    background:
+        radial-gradient(circle at 90% 20%,rgba(154,222,93,.19),transparent 30%),
+        #eff8eb;
+}
+
+.voice-icon{
+    width:50px;
+    height:50px;
+    display:grid;
+    place-items:center;
+    border-radius:14px;
+    background:white;
+    font-size:24px;
+}
+
+.voice-info{
+    flex:1;
+}
+
+.voice-info b{
+    font-size:12px;
+}
+
+.voice-info p{
+    margin-top:3px;
+    color:var(--muted);
+    font-size:9px;
+    line-height:1.5;
+}
+
+.form-group{
+    margin-bottom:12px;
+}
+
+.form-label{
+    display:block;
+    margin-bottom:5px;
+    font-size:10px;
+    font-weight:800;
+    color:var(--text);
+}
+
+.input{
+    width:100%;
+    padding:10px 12px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:#fbfdfb;
+    outline:none;
+    font-size:12px;
+}
+
+.input:focus{
+    border-color:var(--green2);
+    background:white;
+}
+
+textarea.input{
+    min-height:90px;
+    resize:vertical;
+}
+
+.modal-bg{
+    position:fixed;
+    inset:0;
+    z-index:300;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    background:rgba(4,24,13,.74);
+    backdrop-filter:blur(8px);
+}
+
+.modal{
+    width:560px;
+    max-width:100%;
+    max-height:92vh;
+    overflow-y:auto;
+    padding:24px;
+    background:white;
+    border-radius:22px;
+    box-shadow:0 35px 90px rgba(0,0,0,.28);
+}
+
+.modal-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    margin-bottom:16px;
+}
+
+.modal-head small{
+    color:#37874d;
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+}
+
+.modal-head h2{
+    margin-top:2px;
+    font-family:Poppins;
+    font-size:20px;
+}
+
+.close{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:#eef2ec;
+    font-size:17px;
+    display:grid;
+    place-items:center;
+}
+
+.tip{
+    padding:12px;
+    background:#eef8ea;
+    border-radius:10px;
+    font-size:10px;
+    line-height:1.5;
+}
+
+.full{
+    width:100%;
+    margin-top:10px;
+}
+
+.toast{
+    position:fixed;
+    right:23px;
+    bottom:22px;
+    z-index:500;
+    max-width:380px;
+    display:none;
+    padding:13px 18px;
+    border-radius:12px;
+    color:white;
+    background:#103c25;
+    box-shadow:0 16px 45px rgba(0,0,0,.22);
+    font-size:11px;
+    line-height:1.4;
+}
+
+.order-card{
+    padding:15px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    margin-bottom:10px;
+    background:white;
+}
+
+.order-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.order-id{
+    font-size:12px;
+    font-weight:800;
+}
+
+.order-status{
+    font-size:8px;
+    padding:5px 9px;
+    border-radius:20px;
+    font-weight:800;
+    background:#e5f6e8;
+    color:#24763e;
+}
+
+.order-desc{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:6px;
+    line-height:1.5;
+}
+
+.progress{
+    display:flex;
+    align-items:center;
+    margin-top:15px;
+}
+
+.progress-step{
+    width:24px;
+    height:24px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:#dde7df;
+    color:#68786d;
+    font-size:8px;
+}
+
+.progress-step.done{
+    color:white;
+    background:#2a8849;
+}
+
+.progress-line{
+    flex:1;
+    height:3px;
+    background:#dde7df;
+}
+
+.progress-line.done{
+    background:#2a8849;
+}
+
+.progress-labels{
+    display:flex;
+    justify-content:space-between;
+    margin-top:5px;
+    color:var(--muted);
+    font-size:8px;
+}
+
+.weather-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.weather-card{
+    padding:18px;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:white;
+    box-shadow:var(--shadow);
+}
+
+.weather-card small{
+    color:var(--muted);
+    font-size:8px;
+    font-weight:800;
+}
+
+.weather-card b{
+    display:block;
+    font-size:24px;
+    margin:6px 0;
+}
+
+.analytics-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.bar{
+    margin:14px 0;
+}
+
+.bar-label{
+    display:flex;
+    justify-content:space-between;
+    font-size:10px;
+}
+
+.bar-track{
+    height:8px;
+    margin-top:5px;
+    border-radius:20px;
+    overflow:hidden;
+    background:#e7eee6;
+}
+
+.bar-fill{
+    height:100%;
+    border-radius:20px;
+    background:linear-gradient(90deg,#35964a,#90dc5d);
+}
+
+.customer-hero{
+    position:relative;
+    overflow:hidden;
+    color:white;
+    padding:26px;
+    border-radius:20px;
+    background:
+        radial-gradient(circle at 85% 15%,rgba(175,230,88,.25),transparent 25%),
+        linear-gradient(120deg,#103d26,#257b45);
+    margin-bottom:18px;
+}
+
+.customer-hero h1{
+    font-family:Poppins;
+    font-size:26px;
+}
+
+.customer-hero p{
+    max-width:720px;
+    margin-top:6px;
+    color:#d3e7d7;
+    font-size:11px;
+    line-height:1.6;
+}
+
+.customer-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+}
+
+.customer-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.ai-understanding{
+    padding:15px;
+    background:#f0f8ed;
+    border:1px solid #dcebd8;
+    border-radius:13px;
+}
+
+.ai-understanding h4{
+    color:#176d3e;
+    font-size:12px;
+    margin-bottom:8px;
+}
+
+.ai-row{
+    display:flex;
+    gap:10px;
+    margin:7px 0;
+    font-size:10px;
+}
+
+.ai-row span{
+    width:90px;
+    color:var(--muted);
+}
+
+.ai-row b{
+    flex:1;
+}
+
+.total{
+    margin-top:12px;
+    padding-top:10px;
+    border-top:1px solid #dae7d6;
+    color:#176d3e;
+    font-weight:800;
+    font-size:13px;
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+}
+
+.step{
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:#fbfdfb;
+}
+
+.step-icon{
+    font-size:20px;
+}
+
+.step b{
+    display:block;
+    margin-top:6px;
+    font-size:10px;
+}
+
+.step small{
+    display:block;
+    margin-top:3px;
+    color:var(--muted);
+    font-size:8px;
+    line-height:1.4;
+}
+
+.voice-listen{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    padding:14px;
+    margin-bottom:14px;
+    border-radius:14px;
+    border:1px dashed #87b876;
+    background:#f0f8ec;
+}
+
+.voice-listen-info{
+    flex:1;
+}
+
+.voice-listen-info b{
+    font-size:11px;
+}
+
+.voice-listen-info p{
+    margin-top:3px;
+    color:var(--muted);
+    font-size:9px;
+}
+
+.languages{
+    display:flex;
+    gap:5px;
+    margin-top:7px;
+}
+
+.languages button{
+    padding:4px 8px;
+    border-radius:6px;
+    background:#e1ece0;
+    font-size:8px;
+    font-weight:700;
+}
+
+.languages button.active{
+    background:#236f3f;
+    color:white;
+}
+
+.voice-status{
+    display:none;
+    margin-bottom:12px;
+    padding:10px;
+    border-radius:9px;
+    background:#fff8df;
+    font-size:9px;
+    line-height:1.5;
+}
+
+.loader{
+    text-align:center;
+    padding:20px;
+}
+
+.spinner{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:3px solid #dce9da;
+    border-top-color:#308649;
+    margin:0 auto 8px;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.why-factor-row{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:10px 0;
+    border-bottom:1px solid #eef2ec;
+}
+
+.why-factor-row:last-child{
+    border-bottom:0;
+}
+
+.why-factor-icon{
+    width:30px;
+    height:30px;
+    border-radius:8px;
+    background:#eef7ec;
+    display:grid;
+    place-items:center;
+    font-size:14px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1200px){
+    .sidebar{
+        width:78px;
+    }
+
+    .brand-text,
+    .nav-btn span:not(.nav-icon),
+    .nav-badge,
+    .menu-title,
+    .sidebar-footer{
+        display:none;
+    }
+
+    .main{
+        margin-left:78px;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .hero-ai{
+        justify-content:flex-start;
+    }
+
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .two-col,
+    .three-col,
+    .customer-grid,
+    .analytics-grid,
+    .sim-chain-grid,
+    .decision-form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .weather-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:700px){
+    .sidebar{
+        display:none;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .topbar{
+        padding:0 10px;
+    }
+
+    .search{
+        width:180px;
+    }
+
+    .container{
+        padding:12px;
+    }
+
+    .hero{
+        padding:20px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .hero-actions,
+    .customer-buttons{
+        flex-direction:column;
+    }
+
+    .stats,
+    .products,
+    .weather-grid,
+    .steps,
+    .decision-metrics-grid{
+        grid-template-columns:1fr;
+    }
+
+    .profile span:last-child{
+        display:none;
+    }
+
+    .top-actions .language-btn{
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+   SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="logo">
+
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#b6ef55"/>
+                        <stop offset="1" stop-color="#31b65c"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="43" fill="url(#lg)" opacity=".95"/>
+                <path d="M18 57 C33 49 43 48 50 50 C58 48 68 49 82 57 C74 72 62 81 50 82 C37 81 25 72 18 57Z" fill="#073c22"/>
+                <path d="M50 81 C48 67 48 47 57 28" stroke="#b7ed55" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <path d="M54 35 C67 26 76 29 81 22 C80 37 70 44 54 43Z" fill="#ecfbcb"/>
+                <path d="M46 43 C32 35 24 37 20 29 C33 28 43 31 46 43Z" fill="#ecfbcb"/>
+                <circle cx="51" cy="21" r="8" fill="#ffd65a"/>
+                <path d="M51 5v9M40 9l6 7M62 9l-6 7" stroke="#ffd65a" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+
+        </div>
+
+        <div class="brand-text">
+            <div class="brand-title">AgriMithra</div>
+            <div class="brand-subtitle">FARMERS • FOOD • FUTURE</div>
+        </div>
+
+    </div>
+
+    <div class="menu-title">DECISION & INTELLIGENCE</div>
+
+    <button class="nav-btn active"
+            onclick="showPage('dashboard',this)">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+    </button>
+
+    <button class="nav-btn"
+            style="background:rgba(154,230,79,.12);border:1px solid rgba(154,230,79,.3)"
+            onclick="showPage('decisionCenter',this)">
+        <span class="nav-icon">🧠</span>
+        <span>Smart Decision Center</span>
+        <span class="nav-badge">NEW</span>
+    </button>
+
+    <button class="nav-btn"
+            onclick="showPage('profitSimulator',this)">
+        <span class="nav-icon">💰</span>
+        <span>Profit Simulator</span>
+        <span class="nav-badge">NEW</span>
+    </button>
+
+    <button class="nav-btn"
+            onclick="showPage('buyerMatch',this)">
+        <span class="nav-icon">🤝</span>
+        <span>Smart Buyer Match</span>
+        <span class="nav-badge">NEW</span>
+    </button>
+
+    <div class="menu-title">FARMER MARKETPLACE</div>
+
+    <button class="nav-btn"
+            onclick="showPage('market',this)">
+        <span class="nav-icon">🛒</span>
+        <span>Marketplace</span>
+    </button>
+
+    <button class="nav-btn"
+            onclick="showPage('crops',this)">
+        <span class="nav-icon">🌱</span>
+        <span>My Crops</span>
+    </button>
+
+    <button class="nav-btn"
+            onclick="showPage('offers',this)">
+        <span class="nav-icon">💬</span>
+        <span>Offers</span>
+    </button>
+
+    <button class="nav-btn"
+            onclick="showPage('orders',this)">
+        <span class="nav-icon">📦</span>
+        <span>Orders & Payments</span>
+    </button>
+
+    <button class="nav-btn"
+            onclick="showPage('logistics',this)">
+        <span class="nav-icon">🚚</span>
+        <span>Shared Logistics</span>
+    </button>
+
+    <button class="nav-btn"
+            onclick="showPage('analytics',this)">
+        <span class="nav-icon">📊</span>
+        <span>Analytics</span>
+    </button>
+
+    <button class="nav-btn"
+            onclick="showPage('weather',this)">
+        <span class="nav-icon">🌦️</span>
+        <span>Weather Intelligence</span>
+    </button>
+
+    <div class="menu-title">DIRECT CUSTOMER</div>
+
+    <button class="nav-btn"
+            onclick="showPage('customer',this)">
+        <span class="nav-icon">🛍️</span>
+        <span>Place Customer Order</span>
+    </button>
+
+    <button class="nav-btn"
+            onclick="showPage('customerOrders',this)">
+        <span class="nav-icon">📋</span>
+        <span>Customer Orders</span>
+    </button>
+
+    <button class="nav-btn"
+            onclick="showPage('aiorders',this)">
+        <span class="nav-icon">🤖</span>
+        <span>AI Fulfillment</span>
+    </button>
+
+    <div class="sidebar-bottom">
+
+        <button class="voice-nav"
+                onclick="openListingVoice()">
+            🎙️ &nbsp; Sell by Voice (தமிழ்/Eng)
+        </button>
+
+        <div class="sidebar-footer">
+            <b>AgriMithra v4.0 (Hackathon Edition)</b><br>
+            Empowering farmers with transparent direct pricing, explainability & shared logistics.
+        </div>
+
+    </div>
+
+</aside>
+
+<!-- =====================================================
+MAIN CONTENT
+===================================================== -->
+
+<main class="main">
+
+<header class="topbar">
+
+    <div class="search">
+        <span class="search-icon">🔎</span>
+        <input id="search"
+               placeholder="Search crops, buyers, locations, orders..."
+               oninput="globalSearch()">
+    </div>
+
+    <div class="top-actions">
+
+        <div class="api-status-pill" id="backendStatusPill" title="Connected to Node.js / Express API">
+            <span class="status-dot"></span>
+            <span id="backendStatusText">API Connected</span>
+        </div>
+
+        <button class="icon-btn"
+                onclick="showToast('🔔 3 new direct buyer requests near Pollachi & Coimbatore')">
+            🔔
+        </button>
+
+        <button class="icon-btn language-btn"
+                onclick="toggleLanguage()">
+            தமிழ்
+        </button>
+
+        <button class="profile"
+                onclick="openProfile()">
+            <span class="avatar">👨‍🌾</span>
+            <span>Ravi Kumar</span>
+        </button>
+
+    </div>
+
+</header>
+
+<div class="container">
+
+<!-- HACKATHON CORE VALUE BANNER -->
+<div class="hackathon-banner">
+    <div>
+        💡 <b>Core Problem Solved:</b> Multiple Intermediaries reduce farmers' earnings by 40–55%. AgriMithra helps you decide <b>WHEN</b> to sell, <b>WHERE</b> to sell, <b>AT WHAT PRICE</b> to sell, and <b>HOW</b> to reduce delivery costs.
+    </div>
+    <button class="secondary" style="padding:5px 10px;font-size:10px;" onclick="showPage('decisionCenter')">
+        Open Decision Center →
+    </button>
+</div>
+
+<!-- =====================================================
+ 1. DASHBOARD
+===================================================== -->
+
+<section id="dashboard" class="page">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                ● LIVE SMART AGRI MARKET & INTELLIGENCE
+            </span>
+
+            <h1>
+                Fair Prices.<br>
+                <span>Direct Selling. Zero Middlemen.</span>
+            </h1>
+
+            <p>
+                AgriMithra connects farmers directly with verified retail, FPO, and commercial buyers.
+                Eliminate intermediary exploitation with rule-based price explainability,
+                profit simulators, voice selling in Tamil/English, and pooled mini-truck logistics.
+            </p>
+
+            <div class="hero-actions">
+
+                <button class="primary"
+                        onclick="showPage('decisionCenter')">
+                    🧠 Smart Decision Center
+                </button>
+
+                <button class="secondary"
+                        onclick="showPage('profitSimulator')">
+                    💰 Profit Loss Simulator
+                </button>
+
+                <button class="secondary"
+                        onclick="openListingVoice()">
+                    🎙️ Sell by Voice
+                </button>
+
+                <button class="secondary"
+                        onclick="showPage('market')">
+                    🛒 Browse Marketplace
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="hero-ai">
+
+            <div class="ai-card">
+
+                <div class="ai-head">
+                    <b>🤖 AI Price Intelligence</b>
+                    <span class="live">● Market Live</span>
+                </div>
+
+                <div class="ai-crop" id="heroCropSub">
+                    Tomato • Grade A • 100 kg
+                </div>
+
+                <div class="ai-price" id="heroPriceDisplay">
+                    ₹31
+                    <small>/kg ↑ 8.2% (Direct)</small>
+                </div>
+
+                <div class="chart">
+                    <span style="height:28%"></span>
+                    <span style="height:40%"></span>
+                    <span style="height:37%"></span>
+                    <span style="height:58%"></span>
+                    <span style="height:51%"></span>
+                    <span style="height:78%"></span>
+                    <span style="height:91%"></span>
+                </div>
+
+                <div class="ai-tip">
+                    💡 <b>Direct Recommendation: ₹31 – ₹35/kg</b>
+                    <br>
+                    Local mandi pays ₹18/kg. Direct trade earns you <b>+₹13/kg (+72%)</b> more!
+                    <button class="offer-btn" style="margin-top:6px;width:100%;font-size:9px;" onclick="openWhyPriceModal('Tomato')">
+                        🔍 Why this price?
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="stat-top">
+                <span class="stat-label">TOTAL REVENUE</span>
+                <div class="stat-icon">💰</div>
+            </div>
+            <span class="stat-value" id="dashTotalRevenue">₹18,450</span>
+            <span class="stat-growth">↑ 14.5% direct trade</span>
+        </div>
+
+        <div class="stat">
+            <div class="stat-top">
+                <span class="stat-label">ADDITIONAL INCOME GAINED</span>
+                <div class="stat-icon">📈</div>
+            </div>
+            <span class="stat-value" style="color:#16703b" id="dashExtraIncome">+₹5,680</span>
+            <span class="stat-growth">vs traditional middleman</span>
+        </div>
+
+        <div class="stat">
+            <div class="stat-top">
+                <span class="stat-label">TRANSPORT SAVED</span>
+                <div class="stat-icon">🚚</div>
+            </div>
+            <span class="stat-value" style="color:#1b6be0" id="dashTransportSavings">₹3,420</span>
+            <span class="stat-growth">via shared mini-trucks</span>
+        </div>
+
+        <div class="stat">
+            <div class="stat-top">
+                <span class="stat-label">ACTIVE LISTINGS</span>
+                <div class="stat-icon">🌱</div>
+            </div>
+            <span class="stat-value" id="listingCount">8</span>
+            <span class="stat-growth">3 receiving direct offers</span>
+        </div>
+
+        <div class="stat">
+            <div class="stat-top">
+                <span class="stat-label">VERIFIED BUYERS</span>
+                <div class="stat-icon">🤝</div>
+            </div>
+            <span class="stat-value">128</span>
+            <span class="stat-growth">24 within 30 km</span>
+        </div>
+
+    </div>
+
+    <!-- FEATURE 7: "SHOULD I SELL NOW?" DECISION CARD -->
+    <div class="card" style="border:2px solid #bce1be;background:linear-gradient(135deg,#ffffff,#f7fdf6);">
+
+        <div class="card-header">
+            <div>
+                <h3>🧠 Should I Sell Now? — Quick Farm Intelligence</h3>
+                <small>Real-time algorithmic decision evaluation based on regional market signals</small>
+            </div>
+            <button class="primary" style="padding:6px 12px;font-size:10px;" onclick="showPage('decisionCenter')">
+                Open Full Decision Center →
+            </button>
+        </div>
+
+        <div class="three-col">
+
+            <div style="padding:14px;background:#fbfefb;border-radius:12px;border:1px solid #e1eee0;">
+                <small style="font-size:9px;color:var(--muted);font-weight:800;">SELECT CROP TO EVALUATE</small>
+                <div style="margin-top:6px;display:flex;gap:6px;">
+                    <select id="quickCropSelect" class="input" onchange="updateQuickSellCard()">
+                        <option value="Tomato">🍅 Tomato (Grade A)</option>
+                        <option value="Onion">🧅 Onion (Grade A)</option>
+                        <option value="Banana">🍌 Banana (Robusta)</option>
+                        <option value="Rice">🌾 Rice (Ponni Raw)</option>
+                        <option value="Chilli">🌶️ Chilli (Hot Red)</option>
+                        <option value="Turmeric">🟡 Turmeric (High Curcumin)</option>
+                    </select>
+                </div>
+
+                <div style="margin-top:12px;font-size:11px;color:var(--muted);line-height:1.5;">
+                    <div>Mandi Rate: <b id="quickMandiPrice" style="color:#2a3630">₹18/kg</b></div>
+                    <div>Direct Potential: <b id="quickDirectPrice" style="color:#13783f">₹31 – ₹35/kg</b></div>
+                </div>
+            </div>
+
+            <div style="padding:14px;background:#fbfefb;border-radius:12px;border:1px solid #e1eee0;">
+                <small style="font-size:9px;color:var(--muted);font-weight:800;">MARKET PRESSURE & SIGNALS</small>
+                <div style="margin-top:8px;font-size:11px;line-height:1.6;">
+                    <div style="display:flex;justify-content:space-between">
+                        <span>Demand Level:</span>
+                        <b id="quickDemandLevel" style="color:#1b7c3d">High (8.8/10)</b>
+                    </div>
+                    <div style="display:flex;justify-content:space-between">
+                        <span>Supply Level:</span>
+                        <b id="quickSupplyLevel">Moderate (5.1/10)</b>
+                    </div>
+                    <div style="display:flex;justify-content:space-between">
+                        <span>Price Trend:</span>
+                        <b id="quickTrend" style="color:#177d3c">↑ Upward (+8.2%)</b>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding:14px;background:#eef8eb;border-radius:12px;border:1px solid #c9e6c5;display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                    <small style="font-size:9px;color:var(--muted);font-weight:800;">ALGORITHMIC RECOMMENDATION</small>
+                    <div style="margin-top:6px;" id="quickBadgeContainer">
+                        <span class="badge-sell-now">⚡ Sell Now (High Direct Demand)</span>
+                    </div>
+                    <p style="font-size:10px;margin-top:6px;color:#244c33;line-height:1.4;" id="quickReasonText">
+                        Urban retail demand is surging by 14% with low local mandi arrivals. Sell now through AgriMithra to secure peak margins.
+                    </p>
+                </div>
+                <div style="display:flex;gap:6px;margin-top:10px;">
+                    <button class="primary" style="flex:1;padding:6px 10px;font-size:9px;" onclick="openListing()">
+                        ＋ List Crop
+                    </button>
+                    <button class="secondary" style="flex:1;padding:6px 10px;font-size:9px;" onclick="openWhyPriceModal(document.getElementById('quickCropSelect').value)">
+                        Why this price?
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin-top:10px;font-size:9px;color:#8a998e;text-align:right;">
+            ℹ️ Market benchmark signals sourced from APMC Mandi benchmarks and active regional B2B buyer request logs.
+        </div>
+
+    </div>
+
+    <div class="two-col">
+
+        <!-- OFFERS -->
+
+        <div class="card">
+
+            <div class="card-header">
+                <h3>🔥 Recent Buyer Direct Offers</h3>
+                <button class="offer-btn" onclick="showPage('offers')">
+                    View all →
+                </button>
+            </div>
+
+            <div id="dashOffersContainer">
+                <!-- Dynamically populated -->
+            </div>
+
+        </div>
+
+        <!-- SHARED TRANSPORT OPTIMIZER QUICK WIDGET -->
+
+        <div class="card">
+
+            <div class="card-header">
+                <h3>🚚 Shared Transport Optimizer</h3>
+                <small style="color:#258243">● 3 Pooled Trucks Available</small>
+            </div>
+
+            <div class="route">
+                <div class="route-point">
+                    <div>📍</div>
+                    <small>Pollachi</small>
+                </div>
+                <div class="route-line"></div>
+                <div class="route-point">
+                    <div>🚛</div>
+                    <small>Pooled Tata Ace</small>
+                </div>
+                <div class="route-line"></div>
+                <div class="route-point">
+                    <div>🏪</div>
+                    <small>Coimbatore</small>
+                </div>
+            </div>
+
+            <div class="driver">
+                <div class="driver-icon">🚛</div>
+                <div class="driver-info">
+                    <b>Arun Logistics (Shared Truck #TN38)</b>
+                    <small>Mini Truck • 450/800 kg booked • 3 Farmers Pooled</small>
+                </div>
+                <div style="text-align:right">
+                    <b style="color:#14703a;font-size:14px">₹420</b>
+                    <small style="display:block;color:#7e8b83;text-decoration:line-through;font-size:8px">₹1,200 solo</small>
+                </div>
+            </div>
+
+            <div style="margin-top:10px;font-size:10px;color:#206e39;background:#eff7ee;padding:8px;border-radius:8px;">
+                💡 <b>Shared Savings: ₹780 (65%)</b> saved per trip by sharing freight capacity with adjacent farms.
+            </div>
+
+            <button class="primary full" onclick="joinSharedTransportAction('trans_100', 'Tomato', 100)">
+                Join Shared Transport Slot
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- VOICE SELLING PROMO -->
+
+    <div class="card">
+
+        <div class="card-header">
+            <div>
+                <h3>🎙️ Natural Voice Selling (தமிழ் & English)</h3>
+                <small>Sell your produce in seconds simply by speaking</small>
+            </div>
+            <button class="primary" onclick="openListingVoice()">
+                Start Voice Listing 🎙️
+            </button>
+        </div>
+
+        <div class="voice-box">
+            <div class="voice-icon">🎙️</div>
+            <div class="voice-info">
+                <b>Speak naturally in English or Tamil with zero typing</b>
+                <p>
+                    Example: “Tomato 200 kg 35 rupees” or “Enakku 200 kilo tomato irukku, kilo 32 rupees-ku sell panna poren”
+                    <br>
+                    AgriMithra extracts crop, quantity, and price, then shows you a <b>Confirmation Screen</b> before publishing!
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 2. SMART DECISION CENTER (FEATURE 1)
+===================================================== -->
+
+<section id="decisionCenter" class="page hidden">
+
+    <div class="page-title">
+        <small>AGRIMITHRA SMART DECISION CENTER</small>
+        <h2>Farmer Smart Decision Center</h2>
+        <p>
+            Make transparent, data-driven selling decisions. Enter your crop parameters below to calculate fair recommended selling prices, logistics savings, net farm profit, and clear actionable guidance.
+        </p>
+    </div>
+
+    <div class="card">
+
+        <div class="card-header">
+            <h3>🌱 1. Enter Your Crop & Harvest Details</h3>
+            <small>Rule-based algorithmic price & profit modeling</small>
+        </div>
+
+        <div class="decision-form-grid">
+
+            <div class="form-group">
+                <label class="form-label">Crop Name</label>
+                <select id="dcCrop" class="input" onchange="runDecisionCenterEngine()">
+                    <option value="Tomato">🍅 Tomato</option>
+                    <option value="Onion">🧅 Onion</option>
+                    <option value="Banana">🍌 Banana</option>
+                    <option value="Rice">🌾 Rice</option>
+                    <option value="Chilli">🌶️ Chilli</option>
+                    <option value="Mango">🥭 Mango</option>
+                    <option value="Carrot">🥕 Carrot</option>
+                    <option value="Turmeric">🟡 Turmeric</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Quantity (kg)</label>
+                <input id="dcQty" type="number" class="input" value="200" oninput="runDecisionCenterEngine()">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Quality / Grade</label>
+                <select id="dcGrade" class="input" onchange="runDecisionCenterEngine()">
+                    <option value="A">Grade A (Premium / Export Quality)</option>
+                    <option value="B">Grade B (Standard Market Quality)</option>
+                    <option value="C">Grade C (Local Processing / Fair)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Farm Location</label>
+                <input id="dcLocation" class="input" value="Pollachi, Tamil Nadu" oninput="runDecisionCenterEngine()">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Expected Price (₹/kg) [Optional]</label>
+                <input id="dcExpectedPrice" type="number" class="input" placeholder="e.g. 35" value="34" oninput="runDecisionCenterEngine()">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Harvest Date</label>
+                <input id="dcHarvestDate" type="date" class="input">
+            </div>
+
+        </div>
+
+        <div style="display:flex;gap:10px;">
+            <button class="primary" onclick="runDecisionCenterEngine()">
+                ⚡ Calculate Smart Decision & Profit
+            </button>
+            <button class="secondary" onclick="openWhyPriceModal(document.getElementById('dcCrop').value)">
+                🔍 Why this price? (Explanation)
+            </button>
+        </div>
+
+        <!-- DECISION RESULTS PANEL -->
+
+        <div class="decision-result-panel" id="dcResultPanel">
+
+            <div class="decision-header-row">
+                <div>
+                    <small style="font-size:9px;color:var(--muted);font-weight:800;text-transform:uppercase;">RECOMMENDED DIRECT SELLING PRICE</small>
+                    <div class="decision-price-display" id="dcPriceRangeDisplay">
+                        ₹36 – ₹40 <small style="font-size:14px;color:#248348">/ kg</small>
+                    </div>
+                    <div style="font-size:11px;color:#456752;">
+                        Local Mandi Benchmark: <b id="dcMandiPriceDisplay">₹18/kg</b> • Direct Advantage: <b id="dcDirectAdvantageDisplay">+₹18 to +₹22/kg (+110%)</b>
+                    </div>
+                </div>
+
+                <div style="text-align:right">
+                    <small style="font-size:9px;color:var(--muted);font-weight:800;text-transform:uppercase;display:block;margin-bottom:4px;">DECISION RECOMMENDATION</small>
+                    <div id="dcRecommendationBadge">
+                        <span class="badge-sell-now">⚡ Sell Now (High Buyer Demand)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="decision-metrics-grid">
+
+                <div class="decision-metric-box">
+                    <small>Estimated Gross Revenue</small>
+                    <b id="dcRevenue" style="color:#13783f">₹7,600</b>
+                    <span style="font-size:9px;color:#6b8072">for 200 kg</span>
+                </div>
+
+                <div class="decision-metric-box">
+                    <small>Estimated Transport Cost</small>
+                    <b id="dcTransport" style="color:#e06b1b">₹410</b>
+                    <span style="font-size:9px;color:#208a46">₹718 saved via pooling</span>
+                </div>
+
+                <div class="decision-metric-box">
+                    <small>Estimated Net Profit</small>
+                    <b id="dcNetProfit" style="color:#116e37">₹7,190</b>
+                    <span style="font-size:9px;color:#208a46">+78% vs Mandi sale</span>
+                </div>
+
+                <div class="decision-metric-box">
+                    <small>Buyer Demand Index</small>
+                    <b id="dcDemandIndex" style="color:#2a7cf0">High (8.8/10)</b>
+                    <span style="font-size:9px;color:#6b8072">16 active buyers</span>
+                </div>
+
+            </div>
+
+            <div class="reasons-box">
+                <b style="font-size:12px;color:var(--dark);">📋 Main Reasons Behind This Recommendation:</b>
+                <ul id="dcReasonsList">
+                    <li>High active direct buyer quote volume in Pollachi and Coimbatore retail clusters.</li>
+                    <li>Direct pricing delivers ~₹20/kg more than local village intermediaries.</li>
+                    <li>Grade A quality earns an additional +15% premium in direct buyer matching.</li>
+                </ul>
+            </div>
+
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+                <button class="primary" onclick="proceedToPublishFromDecision()">
+                    🌱 Publish Direct Listing with This Price
+                </button>
+                <button class="secondary" onclick="showPage('buyerMatch')">
+                    🤝 View Matched Direct Buyers →
+                </button>
+                <button class="secondary" onclick="openWhyPriceModal(document.getElementById('dcCrop').value)">
+                    🔍 View Detailed 7-Factor Breakdown
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 3. PROFIT LOSS SIMULATOR (FEATURE 2)
+===================================================== -->
+
+<section id="profitSimulator" class="page hidden">
+
+    <div class="page-title">
+        <small>INTERMEDIARY EXPLOITATION ANALYSIS</small>
+        <h2>How Much Are You Losing to Intermediaries?</h2>
+        <p>
+            Traditional agricultural supply chains pass produce through 4–5 intermediaries before reaching consumers. Compare what you earn traditionally versus selling directly through AgriMithra.
+        </p>
+    </div>
+
+    <div class="card">
+
+        <div class="card-header">
+            <h3>📊 Interactive Supply Chain Simulator</h3>
+            <small>Adjust crop and volume to see real financial difference</small>
+        </div>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label class="form-label">Crop Name</label>
+                <select id="simCrop" class="input" onchange="runProfitSimulatorEngine()">
+                    <option value="Tomato">🍅 Tomato</option>
+                    <option value="Onion">🧅 Onion</option>
+                    <option value="Banana">🍌 Banana</option>
+                    <option value="Rice">🌾 Rice</option>
+                    <option value="Chilli">🌶️ Chilli</option>
+                    <option value="Mango">🥭 Mango</option>
+                    <option value="Carrot">🥕 Carrot</option>
+                    <option value="Turmeric">🟡 Turmeric</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Harvest Quantity (kg)</label>
+                <input id="simQty" type="number" class="input" value="500" oninput="runProfitSimulatorEngine()">
+            </div>
+
+        </div>
+
+        <!-- SIMULATOR 2-COL COMPARISON -->
+        <div class="sim-chain-grid">
+
+            <!-- TRADITIONAL CHAIN -->
+            <div class="sim-card-traditional">
+
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                    <div>
+                        <b style="color:#ba322b;font-size:14px">Traditional Supply Chain</b>
+                        <small style="display:block;color:var(--muted);font-size:9px">5-Stage Middleman Model</small>
+                    </div>
+                    <span style="font-size:18px">❌</span>
+                </div>
+
+                <div class="chain-step">
+                    <span>1. Farmer (You)</span>
+                    <b id="simTradFarmerPrice">₹18/kg (42% share)</b>
+                </div>
+
+                <div class="chain-step">
+                    <span>2. Village Aggregator / Trader</span>
+                    <b id="simTradTraderPrice">₹24/kg (+₹6 cut)</b>
+                </div>
+
+                <div class="chain-step">
+                    <span>3. Mandi Commission & Wholesaler</span>
+                    <b id="simTradWholesalePrice">₹30/kg (+₹6 cut)</b>
+                </div>
+
+                <div class="chain-step">
+                    <span>4. Urban Retailer / Vendor</span>
+                    <b id="simTradRetailPrice">₹42/kg (+₹12 cut)</b>
+                </div>
+
+                <div class="chain-step" style="background:#fff2f0;border-color:#f5c4be;">
+                    <span>5. End Consumer Pays</span>
+                    <b id="simTradConsumerPrice">₹42/kg</b>
+                </div>
+
+                <div style="margin-top:14px;padding-top:10px;border-top:1px solid #f2dbd9;">
+                    <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;">
+                        <span>Your Revenue:</span>
+                        <b id="simTradRevenue" style="color:#b32424">₹9,000</b>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:11px;color:#ba322b">
+                        <span>Intermediary Margin Lost:</span>
+                        <b id="simTradMarginLost">₹12,000</b>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- DIRECT AGRIMITHRA CHAIN -->
+            <div class="sim-card-direct">
+
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                    <div>
+                        <b style="color:#14733c;font-size:14px">AgriMithra Direct Trade</b>
+                        <small style="display:block;color:var(--muted);font-size:9px">Transparent Direct Connection</small>
+                    </div>
+                    <span style="font-size:18px">✅</span>
+                </div>
+
+                <div class="chain-step" style="background:#eaf8eb;border-color:#b9eabf;">
+                    <span>1. Farmer on AgriMithra (You)</span>
+                    <b id="simDirectFarmerPrice" style="color:#13783f">₹33/kg (87% share)</b>
+                </div>
+
+                <div class="chain-step">
+                    <span>2. Shared Green Logistics</span>
+                    <b id="simDirectTransportPerKg">₹2/kg (Pooled Mini-truck)</b>
+                </div>
+
+                <div class="chain-step" style="background:#f4fbf2;border-color:#c8ebd0;">
+                    <span>3. Verified Buyer / Retailer</span>
+                    <b id="simDirectBuyerFinalPrice">₹37/kg (Buyer saves 12%)</b>
+                </div>
+
+                <div style="padding:10px;background:white;border-radius:10px;border:1px solid #d3ead7;margin:8px 0;font-size:10px;color:#206338;">
+                    ✓ Zero commission agent deductions<br>
+                    ✓ Instant UPI payment on doorstep inspection<br>
+                    ✓ Fair pricing transparency for both farmer & buyer
+                </div>
+
+                <div style="margin-top:14px;padding-top:10px;border-top:1px solid #cce8d0;">
+                    <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;">
+                        <span>Direct Gross Revenue:</span>
+                        <b id="simDirectRevenue" style="color:#13783f">₹16,500</b>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)">
+                        <span>Shared Transport Cost:</span>
+                        <b id="simDirectTransportCost">₹1,000</b>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:800;color:#13783f;margin-top:4px;">
+                        <span>Net Amount Received:</span>
+                        <b id="simDirectNetReceived">₹15,500</b>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- HIGHLIGHTED REVENUE GAIN CARD -->
+        <div class="sim-gain-highlight">
+            <div>
+                <span style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#cbf59f;font-weight:800;">YOUR DIRECT SELLING ADVANTAGE</span>
+                <div style="margin-top:2px;font-size:15px;font-weight:700;">
+                    Potential Additional Income: <b id="simExtraGainDisplay">+₹6,500 (+72.2%)</b>
+                </div>
+                <small style="color:#d5e8dc;font-size:10px;display:block;margin-top:3px;">
+                    By cutting middleman markups, you retain 87% of the buyer value instead of only 42%.
+                </small>
+            </div>
+            <button class="secondary" onclick="showPage('decisionCenter')">
+                Calculate for My Produce →
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 4. SMART BUYER MATCHING (FEATURE 4)
+===================================================== -->
+
+<section id="buyerMatch" class="page hidden">
+
+    <div class="page-title">
+        <small>AI-ASSISTED MATCHING</small>
+        <h2>Smart Buyer Match</h2>
+        <p>
+            Algorithmic buyer matching based on crop, volume requirements, offered price proximity, distance, and payment reliability. Matches are scored as compatibility percentages.
+        </p>
+    </div>
+
+    <div class="card">
+
+        <div class="card-header">
+            <h3>🤝 Verified Buyer Network</h3>
+            <div style="display:flex;gap:6px;">
+                <select id="buyerMatchCropFilter" class="input" style="width:auto;padding:6px 12px;font-size:10px;" onchange="renderSmartBuyerMatches()">
+                    <option value="all">All Crops</option>
+                    <option value="Tomato">Tomato Buyers</option>
+                    <option value="Onion">Onion Buyers</option>
+                    <option value="Banana">Banana Buyers</option>
+                    <option value="Chilli">Chilli Buyers</option>
+                    <option value="Turmeric">Turmeric Buyers</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="smartBuyerList">
+            <!-- Dynamically populated -->
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 5. MARKETPLACE
+===================================================== -->
+
+<section id="market" class="page hidden">
+
+    <div class="page-title">
+        <small>LIVE MARKETPLACE</small>
+        <h2>Fresh Produce From Farmers</h2>
+        <p>
+            Customers and commercial buyers can directly buy or send direct offers to farmers.
+        </p>
+    </div>
+
+    <div class="card">
+
+        <div class="card-header">
+            <h3>🌾 Available Produce</h3>
+            <button class="primary" onclick="openListing()">
+                ＋ Add Produce
+            </button>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="filterProducts('all',this)">All</button>
+            <button class="tab" onclick="filterProducts('vegetable',this)">Vegetables</button>
+            <button class="tab" onclick="filterProducts('fruit',this)">Fruits</button>
+            <button class="tab" onclick="filterProducts('grain',this)">Grains</button>
+            <button class="tab" onclick="filterProducts('spice',this)">Spices</button>
+        </div>
+
+        <div class="products" id="products"></div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 6. MY CROPS
+===================================================== -->
+
+<section id="crops" class="page hidden">
+
+    <div class="page-title">
+        <small>FARMER INVENTORY</small>
+        <h2>My Crops</h2>
+        <p>Manage and track produce listed by you.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>🌱 My Active Listings</h3>
+            <button class="primary" onclick="openListing()">
+                ＋ New Listing
+            </button>
+        </div>
+        <div id="myCrops"></div>
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 7. OFFERS
+===================================================== -->
+
+<section id="offers" class="page hidden">
+
+    <div class="page-title">
+        <small>BUYER DEMAND</small>
+        <h2>Buyer Offers & Negotiations</h2>
+        <p>Accept, counter, or review direct purchase offers from verified buyers.</p>
+    </div>
+
+    <div class="card">
+        <div id="allOffersContainer">
+            <!-- Dynamically populated -->
+        </div>
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 8. ORDERS & PAYMENTS
+===================================================== -->
+
+<section id="orders" class="page hidden">
+
+    <div class="page-title">
+        <small>FARMER ORDERS</small>
+        <h2>Orders & Payments</h2>
+    </div>
+
+    <div id="farmerOrders"></div>
+
+    <div class="card" style="background:linear-gradient(120deg,#103b24,#287445);color:white">
+        <small style="color:#bfdcc7">AVAILABLE WALLET BALANCE (DIRECT UPI ESCROW)</small>
+        <div style="font-size:32px;font-weight:800;margin:8px 0">₹18,450</div>
+        <small>UPI Connected • Instant settlement enabled • Last payment received ₹5,700</small>
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 9. SHARED TRANSPORT OPTIMIZER (LOGISTICS UPGRADE)
+===================================================== -->
+
+<section id="logistics" class="page hidden">
+
+    <div class="page-title">
+        <small>SHARED LOGISTICS OPTIMIZER</small>
+        <h2>Shared Transport Optimizer</h2>
+        <p>
+            Reduce freight costs by up to 65% by pooling Tata Ace mini-trucks with farmers sharing compatible routes and pickup schedules.
+        </p>
+    </div>
+
+    <div class="card">
+
+        <div class="transport-savings-banner">
+            <div>
+                <small style="font-size:9px;font-weight:800;letter-spacing:1px;color:#206e39;text-transform:uppercase;">SHARED FREIGHT BENEFIT</small>
+                <div style="margin-top:3px;font-size:16px;font-weight:800;color:#0a3a1f;">
+                    Estimated Transport Savings: <b>₹780 (65%)</b>
+                </div>
+                <p style="font-size:10px;color:#456752;margin-top:2px;">
+                    Individual solo truck hire: ₹1,200 | AgriMithra Pooled route: ₹420
+                </p>
+            </div>
+            <button class="primary" onclick="joinSharedTransportAction('trans_100', 'Tomato', 200)">
+                Join Shared Transport
+            </button>
+        </div>
+
+        <div class="card-header">
+            <h3>🚛 Available Pooled Transport Routes</h3>
+            <small style="color:#1d7940">● Real-time booking</small>
+        </div>
+
+        <div id="transportRoutesContainer">
+            <!-- Dynamically populated -->
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 10. FARMER EARNINGS ANALYTICS (UPGRADED)
+===================================================== -->
+
+<section id="analytics" class="page hidden">
+
+    <div class="page-title">
+        <small>AI FARMER INTELLIGENCE</small>
+        <h2>Farmer Earnings Analytics</h2>
+        <p>Comprehensive breakdown of your direct-selling revenues, intermediary cost savings, and crop performance metrics.</p>
+    </div>
+
+    <!-- 8 CORE ANALYTICS METRICS -->
+    <div class="stats" style="grid-template-columns:repeat(4,1fr);">
+
+        <div class="stat">
+            <div class="stat-top">
+                <span class="stat-label">TOTAL SALES</span>
+                <div class="stat-icon">📦</div>
+            </div>
+            <span class="stat-value">24</span>
+            <span class="stat-growth">18 Completed • 6 Pending</span>
+        </div>
+
+        <div class="stat">
+            <div class="stat-top">
+                <span class="stat-label">TOTAL REVENUE</span>
+                <div class="stat-icon">💰</div>
+            </div>
+            <span class="stat-value">₹18,450</span>
+            <span class="stat-growth">Direct farm gate earnings</span>
+        </div>
+
+        <div class="stat">
+            <div class="stat-top">
+                <span class="stat-label">TRANSPORT SAVINGS</span>
+                <div class="stat-icon">🚚</div>
+            </div>
+            <span class="stat-value" style="color:#1e6de0">₹3,420</span>
+            <span class="stat-growth">62% average freight savings</span>
+        </div>
+
+        <div class="stat">
+            <div class="stat-top">
+                <span class="stat-label">ESTIMATED ADDITIONAL INCOME</span>
+                <div class="stat-icon">📈</div>
+            </div>
+            <span class="stat-value" style="color:#14703a">+₹5,680</span>
+            <span class="stat-growth">+44.5% vs Mandi intermediaries</span>
+        </div>
+
+    </div>
+
+    <div class="analytics-grid">
+
+        <div class="card">
+            <div class="card-header">
+                <h3>🌱 Crop Performance & Margins</h3>
+            </div>
+
+            <div class="bar">
+                <div class="bar-label">
+                    <span>🍅 Tomato (450 kg sold • Avg ₹32/kg)</span>
+                    <b>82%</b>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:82%"></div></div>
+            </div>
+
+            <div class="bar">
+                <div class="bar-label">
+                    <span>🧅 Onion (300 kg sold • Avg ₹28/kg)</span>
+                    <b>68%</b>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:68%"></div></div>
+            </div>
+
+            <div class="bar">
+                <div class="bar-label">
+                    <span>🍌 Banana (250 kg sold • Avg ₹38/kg)</span>
+                    <b>91%</b>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:91%"></div></div>
+            </div>
+
+            <div class="bar">
+                <div class="bar-label">
+                    <span>🌶️ Chilli (80 kg sold • Avg ₹118/kg)</span>
+                    <b>74%</b>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:74%"></div></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>🤖 Decision Intelligence Insights</h3>
+            </div>
+
+            <div class="tip">
+                📈 <b>Tomato direct buyer demand</b> expected to rise <b>12%</b> this week due to regional festival orders in Coimbatore.
+            </div>
+
+            <div class="tip" style="margin-top:10px">
+                💰 <b>Best selling day:</b> Tuesday & Friday mornings fetch +₹2.50/kg higher direct quotes.
+            </div>
+
+            <div class="tip" style="margin-top:10px">
+                🚚 <b>Shared Logistics Optimization:</b> Consolidating 2 shipments on the Pollachi-Coimbatore corridor will save an extra <b>₹320</b> this week.
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 11. WEATHER
+===================================================== -->
+
+<section id="weather" class="page hidden">
+
+    <div class="page-title">
+        <small>FARM INTELLIGENCE</small>
+        <h2>Weather Intelligence</h2>
+    </div>
+
+    <div class="weather-grid">
+        <div class="weather-card">
+            <small>TODAY</small>
+            <b>29°C</b>
+            <span>☁️ Partly Cloudy</span>
+        </div>
+        <div class="weather-card">
+            <small>RAINFALL</small>
+            <b>12 mm</b>
+            <span>Moderate</span>
+        </div>
+        <div class="weather-card">
+            <small>HUMIDITY</small>
+            <b>74%</b>
+            <span>Suitable</span>
+        </div>
+        <div class="weather-card">
+            <small>WIND</small>
+            <b>14 km/h</b>
+            <span>Normal</span>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+        <div class="tip">
+            🌾 <b>AI Farming Alert</b><br><br>
+            Moderate rainfall expected. Consider delaying tomato & chilli harvest by 12–18 hours for better crop moisture control and extended post-harvest shelf life.
+        </div>
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 12. CUSTOMER PLACE ORDER
+===================================================== -->
+
+<section id="customer" class="page hidden">
+
+    <div class="customer-hero">
+        <h1>🛒 Customer AI Order Center</h1>
+        <p>
+            Customers and commercial buyers can directly place an order by describing what they need. AgriMithra identifies the crop, quantity, fair price, matches a nearby verified farmer, and arranges logistics automatically.
+        </p>
+        <div class="customer-buttons">
+            <button class="secondary" onclick="openCustomerOrder()">
+                ＋ Place Order
+            </button>
+            <button class="secondary" onclick="shareCustomerOrder()">
+                📤 Share Order via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <div class="customer-grid">
+
+        <div class="card">
+            <div class="card-header">
+                <h3>📝 Customer Requirement</h3>
+            </div>
+            <div class="form-group">
+                <label class="form-label">What do you need?</label>
+                <textarea id="customerRequest" class="input" placeholder="Example: I need 200 kg tomato at ₹35 per kg for delivery to Coimbatore"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Customer / Business Name</label>
+                <input id="customerName" class="input" value="Ravi Kumar">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Delivery Location</label>
+                <input id="customerLocation" class="input" value="Coimbatore">
+            </div>
+            <button class="primary full" onclick="placeCustomerOrder()">
+                🛒 Place Order & Let AI Match Farmer
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>🤖 AI Order Matching & Fulfillment</h3>
+                <small>Automatic fulfillment</small>
+            </div>
+            <div id="aiOrderResult">
+                <div class="ai-understanding">
+                    <h4>Ready to receive order</h4>
+                    <p style="font-size:10px;color:#748078;line-height:1.6">
+                        Enter a requirement such as:<br><br>
+                        <b>“Need 200 kg tomato at ₹35/kg in Coimbatore”</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 13. CUSTOMER ORDERS
+===================================================== -->
+
+<section id="customerOrders" class="page hidden">
+
+    <div class="page-title">
+        <small>CUSTOMER ACCOUNT</small>
+        <h2>Customer Orders</h2>
+        <p>Track orders placed through AgriMithra.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>📦 Order History</h3>
+            <button class="primary" onclick="showPage('customer')">
+                ＋ New Order
+            </button>
+        </div>
+        <div id="customerOrderHistory"></div>
+    </div>
+
+</section>
+
+<!-- =====================================================
+ 14. AI FULFILLMENT
+===================================================== -->
+
+<section id="aiorders" class="page hidden">
+
+    <div class="page-title">
+        <small>AUTOMATED SUPPLY CHAIN</small>
+        <h2>AI Order Fulfillment Flow</h2>
+        <p>Customer Requirement → AI Extraction → Direct Farmer Match → Shared Logistics → Delivery.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>🤖 How AgriMithra Fulfills Orders Directly</h3>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-icon">🧑</div>
+                <b>1. Buyer Request</b>
+                <small>Natural language requirement</small>
+            </div>
+            <div class="step">
+                <div class="step-icon">🧠</div>
+                <b>2. AI Parsing</b>
+                <small>Crop, quantity, price parsed</small>
+            </div>
+            <div class="step">
+                <div class="step-icon">🌾</div>
+                <b>3. Farmer Match</b>
+                <small>Best farm matched directly</small>
+            </div>
+            <div class="step">
+                <div class="step-icon">🚚</div>
+                <b>4. Shared Logistics</b>
+                <small>Pooled mini-truck assigned</small>
+            </div>
+            <div class="step">
+                <div class="step-icon">✅</div>
+                <b>5. Direct Delivery</b>
+                <small>Delivered & UPI settled</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>📦 Recent AI Fulfilled Direct Orders</h3>
+        </div>
+        <div id="aiOrdersList"></div>
+    </div>
+
+</section>
+
+</div>
+
+</main>
+
+<!-- =====================================================
+ MODAL 1: LISTING MODAL
+===================================================== -->
+
+<div class="modal-bg" id="listingModal">
+
+    <div class="modal">
+
+        <div class="modal-head">
+            <div>
+                <small>DIRECT FARM LISTING</small>
+                <h2>List Your Produce</h2>
+            </div>
+            <button class="close" onclick="closeListing()">×</button>
+        </div>
+
+        <div class="voice-listen">
+            <div style="font-size:28px">🎙️</div>
+            <div class="voice-listen-info">
+                <b>Speak produce details in English or Tamil</b>
+                <p>Example: “Tomato 200 kg 35 rupees”</p>
+                <div class="languages">
+                    <button class="active" onclick="setVoiceLanguage('en-IN',this)">English</button>
+                    <button onclick="setVoiceLanguage('ta-IN',this)">தமிழ்</button>
+                </div>
+            </div>
+            <button class="primary" id="voiceBtn" onclick="startListingVoice()">🎙️</button>
+        </div>
+
+        <div class="voice-status" id="voiceStatus"></div>
+
+        <label class="form-label">Produce / Crop</label>
+        <input id="cropName" class="input" value="Tomato" placeholder="Tomato">
+
+        <div class="form-grid" style="margin-top:10px;">
+            <div>
+                <label class="form-label">Quantity (kg)</label>
+                <input id="cropQty" type="number" class="input" value="100">
+            </div>
+            <div>
+                <label class="form-label">Quality / Grade</label>
+                <select id="cropGrade" class="input">
+                    <option value="A">Grade A (Premium)</option>
+                    <option value="B">Grade B (Standard)</option>
+                    <option value="C">Grade C (Local)</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="margin-top:10px;">
+            <label class="form-label">Your Selling Price (₹/kg)</label>
+            <input id="cropPrice" type="number" class="input" value="34">
+        </div>
+
+        <div class="tip" style="margin-top:10px;">
+            🤖 <b>Smart Price Guidance:</b> Recommended direct range: <b>₹31 – ₹35/kg</b> (Mandi pays ₹18/kg).
+        </div>
+
+        <div style="margin-top:10px;">
+            <label class="form-label">Farm Location</label>
+            <input id="cropLocation" class="input" value="Pollachi, Tamil Nadu">
+        </div>
+
+        <button class="primary full" onclick="publishListing()">
+            🌱 Publish Produce Directly
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =====================================================
+ MODAL 2: VOICE CONFIRMATION MODAL (FEATURE 6)
+===================================================== -->
+
+<div class="modal-bg" id="voiceConfirmModal">
+
+    <div class="modal" style="width:480px;">
+
+        <div class="modal-head">
+            <div>
+                <small style="color:#1b743e;font-weight:800">VOICE SELLING RECOGNITION</small>
+                <h2>Confirm Your Listing</h2>
+            </div>
+            <button class="close" onclick="closeVoiceConfirmModal()">×</button>
+        </div>
+
+        <div style="padding:14px;background:#f2faf0;border-radius:12px;border:1px solid #cce8d0;margin-bottom:14px;">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">🗣️ Transcript Recognized:</div>
+            <b id="voiceTranscriptDisplay" style="font-size:12px;color:#126c36">“Enakku 200 kilo tomato irukku, kilo 32 rupees-ku sell panna poren”</b>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Crop Detected</label>
+            <input id="voiceConfirmCrop" class="input">
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="form-label">Quantity (kg)</label>
+                <input id="voiceConfirmQty" type="number" class="input">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Price (₹/kg)</label>
+                <input id="voiceConfirmPrice" type="number" class="input">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Location</label>
+            <input id="voiceConfirmLocation" class="input" value="Pollachi, Tamil Nadu">
+        </div>
+
+        <div class="tip">
+            ⚠️ <b>Verification Step:</b> Please check the details above before publishing. AgriMithra never publishes voice listings automatically without your explicit confirmation.
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:14px;">
+            <button class="secondary" style="flex:1" onclick="closeVoiceConfirmModal()">
+                Edit / Cancel
+            </button>
+            <button class="primary" style="flex:1.5" onclick="executeVoicePublish()">
+                ✅ Confirm & Publish
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================================
+ MODAL 3: "WHY THIS PRICE?" EXPLANATION MODAL (FEATURE 3)
+===================================================== -->
+
+<div class="modal-bg" id="whyPriceModal">
+
+    <div class="modal" style="width:620px;">
+
+        <div class="modal-head">
+            <div>
+                <small style="color:#1b743e;font-weight:800">TRANSPARENT PRICING ENGINE</small>
+                <h2 id="whyPriceTitle">Why this price? — Tomato</h2>
+            </div>
+            <button class="close" onclick="closeWhyPriceModal()">×</button>
+        </div>
+
+        <div style="padding:14px;background:#eef8eb;border-radius:14px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;">
+            <div>
+                <span style="font-size:9px;color:var(--muted);font-weight:800;">RECOMMENDED DIRECT PRICE</span>
+                <div style="font-size:26px;font-weight:800;color:#13783f;" id="whyPriceRange">₹31 – ₹35 / kg</div>
+            </div>
+            <div style="text-align:right">
+                <span style="font-size:9px;color:var(--muted);font-weight:800;">MANDI BASELINE</span>
+                <div style="font-size:18px;font-weight:800;color:#6b8072;" id="whyPriceMandi">₹18 / kg</div>
+            </div>
+        </div>
+
+        <p style="font-size:11px;color:var(--muted);margin-bottom:12px;">
+            AgriMithra pricing is 100% explainable and rule-based. Below are the exact market forces, logistics offsets, and quality adjustments computed for this crop:
+        </p>
+
+        <div id="whyFactorsList">
+            <!-- Dynamically populated 7 factors -->
+        </div>
+
+        <div style="margin-top:16px;text-align:right;">
+            <button class="primary" onclick="closeWhyPriceModal()">
+                Got It, Thanks!
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================================
+ MODAL 4: SEND OFFER MODAL (FEATURE 4)
+===================================================== -->
+
+<div class="modal-bg" id="sendOfferModal">
+
+    <div class="modal" style="width:480px;">
+
+        <div class="modal-head">
+            <div>
+                <small style="color:#1b743e;font-weight:800">DIRECT B2B NEGOTIATION</small>
+                <h2 id="sendOfferBuyerName">Send Offer to Buyer</h2>
+            </div>
+            <button class="close" onclick="closeSendOfferModal()">×</button>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Crop</label>
+            <input id="modalOfferCrop" class="input" readonly>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="form-label">Quantity (kg)</label>
+                <input id="modalOfferQty" type="number" class="input" value="100">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Your Offered Price (₹/kg)</label>
+                <input id="modalOfferPrice" type="number" class="input" value="34">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Note for Buyer</label>
+            <textarea id="modalOfferMessage" class="input" style="min-height:70px;" placeholder="Freshly harvested Grade A produce with door delivery..."></textarea>
+        </div>
+
+        <button class="primary full" onclick="submitCustomOffer()">
+            🤝 Send Direct Offer to Buyer
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =====================================================
+ MODAL 5: CUSTOMER ORDER MODAL
+===================================================== -->
+
+<div class="modal-bg" id="customerModal">
+
+    <div class="modal">
+
+        <div class="modal-head">
+            <div>
+                <small>AI CUSTOMER ORDER</small>
+                <h2>Place Your Order</h2>
+            </div>
+            <button class="close" onclick="closeCustomerOrder()">×</button>
+        </div>
+
+        <label class="form-label">Customer Name</label>
+        <input id="modalCustomerName" class="input" value="Ravi Kumar">
+
+        <div style="margin-top:10px;">
+            <label class="form-label">What do you need?</label>
+            <textarea id="modalCustomerRequest" class="input" placeholder="Example: Need 200 kg tomato at ₹35 per kg"></textarea>
+        </div>
+
+        <div style="margin-top:10px;">
+            <label class="form-label">Delivery Location</label>
+            <input id="modalCustomerLocation" class="input" value="Coimbatore">
+        </div>
+
+        <button class="primary full" onclick="submitCustomerOrder()">
+            🛒 Place Order
+        </button>
+
+    </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- =====================================================
+ JAVASCRIPT LOGIC & API INTEGRATION
+===================================================== -->
+<script>
+
+/* =====================================================
+ CONFIGURATION & STATE
+===================================================== */
+
+const API_BASE_URL = window.location.origin.includes('localhost')
+    ? `${window.location.origin}/api`
+    : 'http://localhost:5000/api';
+
+let products = [
+    { id:"L101", name:"Tomato", cat:"vegetable", icon:"🍅", price:31, qty:"100 kg", loc:"Pollachi", grade:"A" },
+    { id:"L102", name:"Onion", cat:"vegetable", icon:"🧅", price:27, qty:"200 kg", loc:"Udumalpet", grade:"A" },
+    { id:"L103", name:"Banana", cat:"fruit", icon:"🍌", price:38, qty:"150 kg", loc:"Coimbatore", grade:"A" },
+    { id:"L104", name:"Rice", cat:"grain", icon:"🌾", price:52, qty:"500 kg", loc:"Tiruppur", grade:"A" },
+    { id:"L105", name:"Chilli", cat:"spice", icon:"🌶️", price:115, qty:"80 kg", loc:"Erode", grade:"A" },
+    { id:"L106", name:"Mango", cat:"fruit", icon:"🥭", price:64, qty:"120 kg", loc:"Pollachi", grade:"A" },
+    { id:"L107", name:"Carrot", cat:"vegetable", icon:"🥕", price:44, qty:"90 kg", loc:"Mettupalayam", grade:"A" },
+    { id:"L108", name:"Turmeric", cat:"spice", icon:"🟡", price:145, qty:"60 kg", loc:"Erode", grade:"A" }
+];
+
+let myListings = JSON.parse(localStorage.getItem("agriListings") || "[]");
+let customerOrders = JSON.parse(localStorage.getItem("customerOrders") || "[]");
+
+let buyersList = [
+    { name:"FreshMart Supermarkets", buyerType:"Retailer", avatar:"🏪", location:"Coimbatore (RS Puram)", distanceKm:24, matchScore:94, crop:"Tomato", targetPrice:34, paymentTerm:"Instant UPI on Delivery" },
+    { name:"GreenBasket Farmers Producer Co.", buyerType:"FPO", avatar:"🌿", location:"Pollachi North", distanceKm:8, matchScore:89, crop:"Onion", targetPrice:29, paymentTerm:"Same-day Bank Transfer" },
+    { name:"Hotel Annapoorna Grand", buyerType:"Hotel / Restaurant", avatar:"🏨", location:"Gandhipuram, Coimbatore", distanceKm:28, matchScore:92, crop:"Banana", targetPrice:40, paymentTerm:"Escrow / Instant UPI" },
+    { name:"Kovai Direct Agro Hub", buyerType:"Wholesaler", avatar:"🏬", location:"Singanallur, Coimbatore", distanceKm:22, matchScore:84, crop:"Turmeric", targetPrice:152, paymentTerm:"Instant IMPS" }
+];
+
+let transportRoutes = [
+    { id:"trans_100", routeFrom:"Pollachi", routeTo:"Coimbatore Market", driverName:"Arun Logistics", driverPhone:"+91 94432 10987", vehicleType:"Tata Ace Mini Truck", capacityKg:800, bookedKg:450, individualCost:1200, sharedCost:420, savingsAmount:780, departureTime:"07:30 AM Tomorrow", pooledFarmersCount:3 },
+    { id:"trans_101", routeFrom:"Udumalpet", routeTo:"Tiruppur Wholesale Hub", driverName:"Selvam Transport", driverPhone:"+91 98421 55678", vehicleType:"Mahindra Bolero Maxi Truck", capacityKg:1200, bookedKg:750, individualCost:1500, sharedCost:550, savingsAmount:950, departureTime:"06:00 AM Tomorrow", pooledFarmersCount:4 },
+    { id:"trans_102", routeFrom:"Erode", routeTo:"Coimbatore RS Puram", driverName:"Kongu Green Freight", driverPhone:"+91 97890 33445", vehicleType:"Eicher Pro Light Cargo", capacityKg:2000, bookedKg:1300, individualCost:2200, sharedCost:750, savingsAmount:1450, departureTime:"08:00 AM Tomorrow", pooledFarmersCount:5 }
+];
+
+let buyerOffers = [
+    { id:"off_1", buyerName:"FreshMart Supermarkets", buyerAvatar:"🏪", crop:"Tomato", quantity:100, grade:"A", offeredPrice:34, matchScore:94, deliveryLocation:"Coimbatore (RS Puram)", status:"Pending" },
+    { id:"off_2", buyerName:"GreenBasket Farmers Producer Co.", buyerAvatar:"🌿", crop:"Onion", quantity:200, grade:"A", offeredPrice:28, matchScore:89, deliveryLocation:"Pollachi North", status:"Pending" },
+    { id:"off_3", buyerName:"Hotel Annapoorna Grand", buyerAvatar:"🏨", crop:"Banana", quantity:150, grade:"A", offeredPrice:39, matchScore:92, deliveryLocation:"Gandhipuram, Coimbatore", status:"Pending" }
+];
+
+/* =====================================================
+ CHECK BACKEND HEALTH & INIT
+===================================================== */
+
+async function checkBackendConnection(){
+    try{
+        const res = await fetch(`${API_BASE_URL}/health`);
+        if(res.ok){
+            const data = await res.json();
+            document.getElementById("backendStatusPill").style.background = "#eaf6ec";
+            document.getElementById("backendStatusText").innerText = data.databaseMode.includes('MongoDB') ? "MongoDB Live" : "API Connected";
+        }
+    }catch(err){
+        document.getElementById("backendStatusPill").style.background = "#fff6e5";
+        document.getElementById("backendStatusText").innerText = "Offline Mode";
+    }
+}
+
+/* =====================================================
+ NAVIGATION
+===================================================== */
+
+function showPage(id,button){
+    document.querySelectorAll(".page").forEach(page=>{
+        page.classList.add("hidden");
+    });
+
+    const target = document.getElementById(id);
+    if(target){
+        target.classList.remove("hidden");
+    }
+
+    document.querySelectorAll(".nav-btn").forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    if(button){
+        button.classList.add("active");
+    }
+
+    if(id==="market") renderProducts();
+    if(id==="crops") renderMyCrops();
+    if(id==="offers") renderOffersPage();
+    if(id==="buyerMatch") renderSmartBuyerMatches();
+    if(id==="logistics") renderTransportRoutes();
+    if(id==="aiorders") renderAIOrders();
+    if(id==="customerOrders") renderCustomerOrders();
+    if(id==="decisionCenter") runDecisionCenterEngine();
+    if(id==="profitSimulator") runProfitSimulatorEngine();
+
+    window.scrollTo({ top:0, behavior:"smooth" });
+}
+
+/* =====================================================
+ FEATURE 1: SMART DECISION CENTER ENGINE
+===================================================== */
+
+async function runDecisionCenterEngine(){
+    const crop = document.getElementById("dcCrop").value;
+    const quantity = Number(document.getElementById("dcQty").value) || 200;
+    const quality = document.getElementById("dcGrade").value;
+    const location = document.getElementById("dcLocation").value;
+    const expectedPrice = document.getElementById("dcExpectedPrice").value;
+
+    try{
+        const res = await fetch(`${API_BASE_URL}/decision/price`, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({ crop, quantity, quality, location, expectedPrice })
+        });
+        if(res.ok){
+            const json = await res.json();
+            displayDecisionCenterResults(json.data);
+            return;
+        }
+    }catch(e){
+        // In case API is offline, execute client-side algorithm
+    }
+
+    // Client-side rule-based calculation
+    const benchmarkRates = {
+        Tomato:{ mandi:18, min:31, max:35, trend:"Upward", trendPct:8.2, demand:"High (8.8/10)" },
+        Onion:{ mandi:16, min:27, max:30, trend:"Stable", trendPct:4.5, demand:"High (8.2/10)" },
+        Banana:{ mandi:22, min:37, max:41, trend:"Upward", trendPct:11.4, demand:"High (9.1/10)" },
+        Rice:{ mandi:34, min:52, max:56, trend:"Stable", trendPct:1.8, demand:"Moderate (6.8/10)" },
+        Chilli:{ mandi:75, min:115, max:128, trend:"Upward", trendPct:9.6, demand:"High (9.4/10)" },
+        Mango:{ mandi:38, min:64, max:72, trend:"Upward", trendPct:6.2, demand:"Moderate (7.9/10)" },
+        Carrot:{ mandi:26, min:44, max:48, trend:"Stable", trendPct:3.1, demand:"Moderate (7.4/10)" },
+        Turmeric:{ mandi:95, min:145, max:160, trend:"Upward", trendPct:12.8, demand:"High (9.6/10)" }
+    };
+
+    const b = benchmarkRates[crop] || benchmarkRates.Tomato;
+    const gradeMultiplier = quality==='A' ? 1.15 : quality==='B' ? 1.0 : 0.88;
+    const minP = Math.round(b.min * gradeMultiplier);
+    const maxP = Math.round(b.max * gradeMultiplier);
+    const avgP = Math.round((minP + maxP) / 2);
+    const rev = avgP * quantity;
+    const transport = Math.round(150 + 26 * 10);
+    const net = rev - transport;
+
+    displayDecisionCenterResults({
+        crop,
+        quantity,
+        recommendedPriceMin: minP,
+        recommendedPriceMax: maxP,
+        recommendedAveragePrice: avgP,
+        estimatedRevenue: rev,
+        estimatedTransportCost: transport,
+        estimatedNetProfit: net,
+        demandLevel: b.demand,
+        benchmarkMandiPrice: b.mandi,
+        recommendation: "Sell Now",
+        reasons:[
+            `High active direct buyer demand in ${location} and nearby urban hubs.`,
+            `Direct pricing earns +₹${avgP - b.mandi}/kg more than local middleman rates.`,
+            `Grade ${quality} quality receives +${quality==='A'?'15%':'0%'} price premium.`
+        ]
+    });
+}
+
+function displayDecisionCenterResults(data){
+    document.getElementById("dcPriceRangeDisplay").innerHTML = `₹${data.recommendedPriceMin} – ₹${data.recommendedPriceMax} <small style="font-size:14px;color:#248348">/ kg</small>`;
+    document.getElementById("dcMandiPriceDisplay").innerText = `₹${data.benchmarkMandiPrice}/kg`;
+    document.getElementById("dcDirectAdvantageDisplay").innerText = `+₹${data.recommendedAveragePrice - data.benchmarkMandiPrice}/kg (+${Math.round(((data.recommendedAveragePrice - data.benchmarkMandiPrice)/data.benchmarkMandiPrice)*100)}%)`;
+
+    document.getElementById("dcRevenue").innerText = `₹${data.estimatedRevenue.toLocaleString()}`;
+    document.getElementById("dcTransport").innerText = `₹${data.estimatedTransportCost.toLocaleString()}`;
+    document.getElementById("dcNetProfit").innerText = `₹${data.estimatedNetProfit.toLocaleString()}`;
+    document.getElementById("dcDemandIndex").innerText = typeof data.demandLevel === 'string' ? data.demandLevel : "High (8.8/10)";
+
+    let badgeClass = data.recommendation==="Sell Now" ? "badge-sell-now" : data.recommendation==="Consider Waiting" ? "badge-wait" : "badge-buyer";
+    document.getElementById("dcRecommendationBadge").innerHTML = `<span class="${badgeClass}">⚡ ${data.recommendation}</span>`;
+
+    const reasonsList = document.getElementById("dcReasonsList");
+    if(reasonsList && data.reasons){
+        reasonsList.innerHTML = data.reasons.map(r => `<li>${r}</li>`).join("");
+    }
+}
+
+function proceedToPublishFromDecision(){
+    const crop = document.getElementById("dcCrop").value;
+    const qty = document.getElementById("dcQty").value;
+    const grade = document.getElementById("dcGrade").value;
+    const loc = document.getElementById("dcLocation").value;
+
+    document.getElementById("cropName").value = crop;
+    document.getElementById("cropQty").value = qty;
+    document.getElementById("cropGrade").value = grade;
+    document.getElementById("cropLocation").value = loc;
+
+    openListing();
+}
+
+/* =====================================================
+ FEATURE 2: PROFIT LOSS SIMULATOR ENGINE
+===================================================== */
+
+async function runProfitSimulatorEngine(){
+    const crop = document.getElementById("simCrop").value;
+    const quantity = Number(document.getElementById("simQty").value) || 500;
+
+    try{
+        const res = await fetch(`${API_BASE_URL}/decision/profit`, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({ crop, quantity })
+        });
+        if(res.ok){
+            const json = await res.json();
+            displayProfitSimResults(json.data);
+            return;
+        }
+    }catch(e){}
+
+    // Fallback Client Calculations
+    const benchmarks = {
+        Tomato:{ mandi:18, trader:24, wholesale:30, retail:42, direct:33 },
+        Onion:{ mandi:16, trader:20, wholesale:26, retail:38, direct:28 },
+        Banana:{ mandi:22, trader:28, wholesale:36, retail:50, direct:39 },
+        Rice:{ mandi:34, trader:40, wholesale:48, retail:65, direct:53 },
+        Chilli:{ mandi:75, trader:90, wholesale:110, retail:155, direct:120 },
+        Mango:{ mandi:38, trader:48, wholesale:60, retail:85, direct:66 },
+        Carrot:{ mandi:26, trader:32, wholesale:40, retail:58, direct:45 },
+        Turmeric:{ mandi:95, trader:112, wholesale:135, retail:195, direct:150 }
+    };
+
+    const b = benchmarks[crop] || benchmarks.Tomato;
+    const tradRev = b.mandi * quantity;
+    const tradLoss = (b.retail - b.mandi) * quantity;
+    const dirRev = b.direct * quantity;
+    const transCost = Math.round(2 * quantity);
+    const dirNet = dirRev - transCost;
+    const extraGain = dirRev - tradRev;
+    const extraPct = Math.round((extraGain / tradRev) * 100);
+
+    displayProfitSimResults({
+        traditionalFarmerPrice: b.mandi,
+        consumerRetailPrice: b.retail,
+        traditionalFarmerRevenue: tradRev,
+        estimatedIntermediaryMargin: tradLoss,
+        directFarmerPrice: b.direct,
+        directSaleRevenue: dirRev,
+        directTransportCost: transCost,
+        netAmountReceivedByFarmer: dirNet,
+        potentialAdditionalIncome: extraGain,
+        percentageIncomeIncrease: extraPct,
+        b
+    });
+}
+
+function displayProfitSimResults(d){
+    const b = d.b || { trader: d.traditionalFarmerPrice+6, wholesale: d.traditionalFarmerPrice+12 };
+    document.getElementById("simTradFarmerPrice").innerText = `₹${d.traditionalFarmerPrice}/kg (${Math.round((d.traditionalFarmerPrice/d.consumerRetailPrice)*100)}% share)`;
+    document.getElementById("simTradTraderPrice").innerText = `₹${b.trader || d.traditionalFarmerPrice+6}/kg (+₹6 cut)`;
+    document.getElementById("simTradWholesalePrice").innerText = `₹${b.wholesale || d.traditionalFarmerPrice+12}/kg (+₹6 cut)`;
+    document.getElementById("simTradRetailPrice").innerText = `₹${d.consumerRetailPrice}/kg (+₹12 markup)`;
+    document.getElementById("simTradConsumerPrice").innerText = `₹${d.consumerRetailPrice}/kg`;
+    document.getElementById("simTradRevenue").innerText = `₹${d.traditionalFarmerRevenue.toLocaleString()}`;
+    document.getElementById("simTradMarginLost").innerText = `₹${d.estimatedIntermediaryMargin.toLocaleString()} lost`;
+
+    document.getElementById("simDirectFarmerPrice").innerText = `₹${d.directFarmerPrice}/kg (87% share)`;
+    document.getElementById("simDirectBuyerFinalPrice").innerText = `₹${d.directFarmerPrice + 4}/kg (Buyer saves 12%)`;
+    document.getElementById("simDirectRevenue").innerText = `₹${d.directSaleRevenue.toLocaleString()}`;
+    document.getElementById("simDirectTransportCost").innerText = `₹${d.directTransportCost.toLocaleString()}`;
+    document.getElementById("simDirectNetReceived").innerText = `₹${d.netAmountReceivedByFarmer.toLocaleString()}`;
+
+    document.getElementById("simExtraGainDisplay").innerText = `+₹${d.potentialAdditionalIncome.toLocaleString()} (+${d.percentageIncomeIncrease}%)`;
+}
+
+/* =====================================================
+ FEATURE 3: "WHY THIS PRICE?" EXPLANATION MODAL
+===================================================== */
+
+async function openWhyPriceModal(cropName = 'Tomato'){
+    const crop = cropName || 'Tomato';
+    document.getElementById("whyPriceTitle").innerText = `Why this price? — ${crop}`;
+    document.getElementById("whyPriceModal").style.display = "flex";
+
+    const factorsBox = document.getElementById("whyFactorsList");
+    factorsBox.innerHTML = `<div class="loader"><div class="spinner"></div><p style="font-size:10px">Computing market factor weights...</p></div>`;
+
+    try{
+        const res = await fetch(`${API_BASE_URL}/decision/price`, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({ crop, quantity: 100, quality: 'A' })
+        });
+        if(res.ok){
+            const json = await res.json();
+            const data = json.data;
+            document.getElementById("whyPriceRange").innerText = `₹${data.recommendedPriceMin} – ₹${data.recommendedPriceMax} / kg`;
+            document.getElementById("whyPriceMandi").innerText = `₹${data.benchmarkMandiPrice} / kg`;
+
+            factorsBox.innerHTML = data.factorsBreakdown.map((f, i) => `
+                <div class="why-factor-row">
+                    <div class="why-factor-icon">${i === 0 ? '🏛️' : i === 1 ? '💰' : i === 2 ? '⭐' : i === 3 ? '📈' : i === 4 ? '🤝' : i === 5 ? '🚚' : '📦'}</div>
+                    <div style="flex:1">
+                        <div style="display:flex;justify-content:space-between;align-items:center">
+                            <b style="font-size:11px;color:var(--dark)">${f.factor}</b>
+                            <span class="factor-tag">${f.impact}</span>
+                        </div>
+                        <p style="font-size:9px;color:var(--muted);margin-top:2px;line-height:1.4">${f.description}</p>
+                    </div>
+                </div>
+            `).join("");
+            return;
+        }
+    }catch(e){}
+
+    // Fallback static explanation
+    factorsBox.innerHTML = `
+        <div class="why-factor-row">
+            <div class="why-factor-icon">🏛️</div>
+            <div style="flex:1">
+                <div style="display:flex;justify-content:space-between"><b style="font-size:11px">Local APMC Mandi Rate</b><span class="factor-tag">₹18/kg base</span></div>
+                <p style="font-size:9px;color:var(--muted)">Baseline arrival price at regional regulated agricultural markets.</p>
+            </div>
+        </div>
+        <div class="why-factor-row">
+            <div class="why-factor-icon">💰</div>
+            <div style="flex:1">
+                <div style="display:flex;justify-content:space-between"><b style="font-size:11px">Direct Intermediary Elimination</b><span class="factor-tag">+₹13/kg gain</span></div>
+                <p style="font-size:9px;color:var(--muted)">Eliminating village aggregator and wholesaler commissions redirects margin directly to you.</p>
+            </div>
+        </div>
+        <div class="why-factor-row">
+            <div class="why-factor-icon">⭐</div>
+            <div style="flex:1">
+                <div style="display:flex;justify-content:space-between"><b style="font-size:11px">Quality Grade A Adjustment</b><span class="factor-tag">+15% Premium</span></div>
+                <p style="font-size:9px;color:var(--muted)">Freshly harvested firm batch receives top retail grade rating.</p>
+            </div>
+        </div>
+        <div class="why-factor-row">
+            <div class="why-factor-icon">📈</div>
+            <div style="flex:1">
+                <div style="display:flex;justify-content:space-between"><b style="font-size:11px">Weekly Price Trend</b><span class="factor-tag">Upward (+8.2%)</span></div>
+                <p style="font-size:9px;color:var(--muted)">Strong consumer demand in Coimbatore and Pollachi urban centers.</p>
+            </div>
+        </div>
+        <div class="why-factor-row">
+            <div class="why-factor-icon">🚚</div>
+            <div style="flex:1">
+                <div style="display:flex;justify-content:space-between"><b style="font-size:11px">Pooled Logistics Freight Offset</b><span class="factor-tag">-₹2.10/kg</span></div>
+                <p style="font-size:9px;color:var(--muted)">Shared Tata Ace mini-truck logistics keeps transportation costs minimal.</p>
+            </div>
+        </div>
+    `;
+}
+
+function closeWhyPriceModal(){
+    document.getElementById("whyPriceModal").style.display = "none";
+}
+
+/* =====================================================
+ FEATURE 4: SMART BUYER MATCHING
+===================================================== */
+
+async function renderSmartBuyerMatches(){
+    const box = document.getElementById("smartBuyerList");
+    if(!box) return;
+
+    const filterCrop = document.getElementById("buyerMatchCropFilter") ? document.getElementById("buyerMatchCropFilter").value : 'all';
+
+    let list = buyersList;
+    if(filterCrop !== 'all'){
+        list = list.filter(b => b.crop.toLowerCase().includes(filterCrop.toLowerCase()));
+    }
+
+    box.innerHTML = list.map(buyer => `
+        <div class="buyer-card">
+            <div class="buyer-score-badge">
+                ${buyer.matchScore}%
+                <small style="display:block;font-size:8px;color:#24763e;font-weight:700">MATCH</small>
+            </div>
+            <div style="font-size:26px">${buyer.avatar}</div>
+            <div style="flex:1">
+                <div style="display:flex;align-items:center;gap:8px">
+                    <b style="font-size:13px">${buyer.name}</b>
+                    <span class="factor-tag">${buyer.buyerType}</span>
+                </div>
+                <small style="color:var(--muted);display:block;font-size:9px;margin-top:2px">
+                    📍 ${buyer.location} (${buyer.distanceKm} km away) • Seeking: <b>${buyer.crop}</b> • Target: <b>₹${buyer.targetPrice}/kg</b>
+                </small>
+                <small style="color:#1d753c;display:block;font-size:9px;margin-top:2px">
+                    💳 Payment: ${buyer.paymentTerm} • ⭐ 4.9 Rating Verified
+                </small>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+                <button class="primary" style="padding:6px 12px;font-size:10px;" onclick="openSendOfferModal('${buyer.name}', '${buyer.crop}', ${buyer.targetPrice})">
+                    🤝 Send Offer
+                </button>
+                <button class="secondary" style="padding:5px 10px;font-size:9px;" onclick="directOrderWithBuyer('${buyer.name}', '${buyer.crop}', ${buyer.targetPrice})">
+                    Place Order
+                </button>
+            </div>
+        </div>
+    `).join("");
+}
+
+function openSendOfferModal(buyerName, crop, targetPrice){
+    document.getElementById("sendOfferBuyerName").innerText = `Send Offer to ${buyerName}`;
+    document.getElementById("modalOfferCrop").value = crop || 'Tomato';
+    document.getElementById("modalOfferPrice").value = targetPrice || 34;
+    document.getElementById("sendOfferModal").style.display = "flex";
+}
+
+function closeSendOfferModal(){
+    document.getElementById("sendOfferModal").style.display = "none";
+}
+
+async function submitCustomOffer(){
+    const crop = document.getElementById("modalOfferCrop").value;
+    const qty = document.getElementById("modalOfferQty").value;
+    const price = document.getElementById("modalOfferPrice").value;
+    const buyerName = document.getElementById("sendOfferBuyerName").innerText.replace("Send Offer to ", "");
+
+    try{
+        await fetch(`${API_BASE_URL}/offers`, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({
+                buyerName,
+                crop,
+                quantity: Number(qty),
+                offeredPrice: Number(price),
+                matchScore: 92
+            })
+        });
+    }catch(e){}
+
+    buyerOffers.unshift({
+        id: "off_" + Date.now(),
+        buyerName,
+        buyerAvatar: "🏪",
+        crop,
+        quantity: Number(qty),
+        grade: "A",
+        offeredPrice: Number(price),
+        matchScore: 92,
+        deliveryLocation: "Coimbatore",
+        status: "Pending"
+    });
+
+    closeSendOfferModal();
+    showToast(`🤝 Direct offer sent to ${buyerName} for ${qty} kg ${crop} at ₹${price}/kg!`);
+    renderOffersPage();
+}
+
+function directOrderWithBuyer(buyerName, crop, price){
+    buyProduct(crop, price);
+}
+
+/* =====================================================
+ FEATURE 5: SHARED TRANSPORT OPTIMIZER
+===================================================== */
+
+async function renderTransportRoutes(){
+    const box = document.getElementById("transportRoutesContainer");
+    if(!box) return;
+
+    try{
+        const res = await fetch(`${API_BASE_URL}/transport`);
+        if(res.ok){
+            const json = await res.json();
+            if(json.data && json.data.length > 0) transportRoutes = json.data;
+        }
+    }catch(e){}
+
+    box.innerHTML = transportRoutes.map(t => `
+        <div class="pool-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                    <b style="font-size:13px;color:var(--dark)">📍 ${t.routeFrom} ➔ ${t.routeTo}</b>
+                    <small style="display:block;color:var(--muted);font-size:9px;margin-top:2px">
+                        🚛 ${t.driverName} • ${t.vehicleType} • Departs: <b>${t.departureTime}</b>
+                    </small>
+                </div>
+                <div style="text-align:right">
+                    <span class="badge-sell-now">⚡ ${t.pooledFarmersCount} Farmers Pooled</span>
+                </div>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:10px;background:#f6faf5;border-radius:10px;">
+                <div>
+                    <span style="font-size:10px;color:var(--muted)">Capacity Booked: <b>${t.bookedKg} / ${t.capacityKg} kg</b></span>
+                    <div class="bar-track" style="width:160px;margin-top:4px;">
+                        <div class="bar-fill" style="width:${Math.round((t.bookedKg/t.capacityKg)*100)}%"></div>
+                    </div>
+                </div>
+                <div style="text-align:right">
+                    <div style="font-size:16px;font-weight:800;color:#13783f">₹${t.sharedCost}</div>
+                    <small style="font-size:8px;color:#85968b;text-decoration:line-through">₹${t.individualCost} solo rate</small>
+                </div>
+                <button class="primary" style="padding:6px 14px;font-size:10px;" onclick="joinSharedTransportAction('${t.id || t._id}', 'Tomato', 100)">
+                    Join Shared Slot
+                </button>
+            </div>
+        </div>
+    `).join("");
+}
+
+async function joinSharedTransportAction(transportId, crop='Tomato', qty=100){
+    try{
+        const res = await fetch(`${API_BASE_URL}/transport/join`, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({ transportId, crop, quantityKg: qty })
+        });
+        if(res.ok){
+            const json = await res.json();
+            showToast(json.message);
+            renderTransportRoutes();
+            return;
+        }
+    }catch(e){}
+
+    showToast(`✅ Successfully joined shared mini-truck transport! Pick-up confirmed for ${qty} kg ${crop} tomorrow morning. Driver: Arun Logistics (+91 94432 10987)`);
+}
+
+/* =====================================================
+ FEATURE 6: NATURAL VOICE SELLING (TAMIL & ENGLISH)
+===================================================== */
+
+let recognition = null;
+let voiceLanguage = "en-IN";
+let isListening = false;
+
+function setVoiceLanguage(language, button){
+    voiceLanguage = language;
+    document.querySelectorAll(".languages button").forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+    showToast(language === "ta-IN" ? "🇮🇳 தமிழ் குரல் பதிவு தேர்ந்தெடுக்கப்பட்டது" : "🇬🇧 English voice recognition selected");
+}
+
+function startListingVoice(){
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if(!SpeechRecognition){
+        showToast("⚠️ Voice recognition is not supported in this browser. Please use Google Chrome.");
+        return;
+    }
+
+    if(isListening) return;
+
+    recognition = new SpeechRecognition();
+    recognition.lang = voiceLanguage;
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    const button = document.getElementById("voiceBtn");
+    const status = document.getElementById("voiceStatus");
+
+    isListening = true;
+    if(button){ button.innerHTML = "🔴"; button.disabled = true; }
+    if(status){
+        status.style.display = "block";
+        status.innerHTML = voiceLanguage === 'ta-IN'
+            ? "🔴 <b>கேட்கிறது...</b><br>கூறுங்கள்: தக்காளி 200 கிலோ 32 ரூபாய்"
+            : "🔴 <b>Listening...</b><br>Say: Tomato 200 kg 35 rupees";
+    }
+
+    try{
+        recognition.start();
+    }catch(error){
+        resetVoice();
+    }
+
+    recognition.onresult = function(event){
+        const text = event.results[0][0].transcript.trim();
+        if(status) status.innerHTML = `🗣️ <b>You said:</b> "${text}"`;
+        processVoiceListingWithConfirmation(text);
+        if(button) button.innerHTML = "✅";
+        setTimeout(() => { resetVoice(); }, 1200);
+    };
+
+    recognition.onerror = function(event){
+        showToast("⚠️ Voice error: " + event.error);
+        resetVoice();
+    };
+
+    recognition.onend = function(){
+        resetVoice();
+    };
+}
+
+function resetVoice(){
+    isListening = false;
+    const button = document.getElementById("voiceBtn");
+    if(button){ button.disabled = false; button.innerHTML = "🎙️"; }
+}
+
+function processVoiceListingWithConfirmation(text){
+    const speech = text.toLowerCase();
+
+    const cropMap = {
+        tomato:"Tomato", onion:"Onion", banana:"Banana", mango:"Mango", rice:"Rice", chilli:"Chilli",
+        chili:"Chilli", carrot:"Carrot", potato:"Potato", brinjal:"Brinjal", cabbage:"Cabbage", beans:"Beans",
+        turmeric:"Turmeric",
+        "தக்காளி":"Tomato", "வெங்காயம்":"Onion", "வாழைப்பழம்":"Banana", "அரிசி":"Rice",
+        "மிளகாய்":"Chilli", "கேரட்":"Carrot", "மஞ்சள்":"Turmeric", "மாம்பழம்":"Mango"
+    };
+
+    let crop = "Tomato";
+    for(const key in cropMap){
+        if(speech.includes(key)){ crop = cropMap[key]; break; }
+    }
+
+    const qtyMatch = speech.match(/(\d+(?:\.\d+)?)\s*(kg|kgs|kilo|kilos|kilogram|கிலோ)/i);
+    const numbers = speech.match(/\d+(?:\.\d+)?/g) || [];
+    const quantity = qtyMatch ? qtyMatch[1] : (numbers.length > 0 ? numbers[0] : "100");
+
+    let price = "32";
+    const priceMatch = speech.match(/(?:₹|rs|rs\.|rupees|ரூபாய்|விலை|at|rate)\s*(\d+(?:\.\d+)?)/i);
+    if(priceMatch){
+        price = priceMatch[1];
+    } else if(numbers.length >= 2){
+        price = numbers[numbers.length - 1];
+    }
+
+    closeListing();
+
+    // OPEN MANDATORY CONFIRMATION SCREEN
+    document.getElementById("voiceTranscriptDisplay").innerText = `"${text}"`;
+    document.getElementById("voiceConfirmCrop").value = crop;
+    document.getElementById("voiceConfirmQty").value = quantity;
+    document.getElementById("voiceConfirmPrice").value = price;
+    document.getElementById("voiceConfirmLocation").value = "Pollachi, Tamil Nadu";
+    document.getElementById("voiceConfirmModal").style.display = "flex";
+}
+
+function openListingVoice(){
+    openListing();
+    setTimeout(() => { startListingVoice(); }, 400);
+}
+
+function closeVoiceConfirmModal(){
+    document.getElementById("voiceConfirmModal").style.display = "none";
+}
+
+async function executeVoicePublish(){
+    const name = document.getElementById("voiceConfirmCrop").value.trim();
+    const qty = document.getElementById("voiceConfirmQty").value;
+    const price = document.getElementById("voiceConfirmPrice").value;
+    const location = document.getElementById("voiceConfirmLocation").value;
+
+    const item = {
+        id:"L" + Date.now(),
+        name,
+        qty: `${qty} kg`,
+        grade:"A",
+        price:Number(price),
+        loc:location,
+        location,
+        date:new Date().toLocaleDateString(),
+        status:"Active"
+    };
+
+    try{
+        await fetch(`${API_BASE_URL}/products`, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({
+                name,
+                quantity: Number(qty),
+                price: Number(price),
+                grade: 'A',
+                location,
+                isVoiceCreated: true
+            })
+        });
+    }catch(e){}
+
+    myListings.unshift(item);
+    localStorage.setItem("agriListings", JSON.stringify(myListings));
+
+    closeVoiceConfirmModal();
+    updateListingCount();
+    renderMyCrops();
+    showToast(`🌱 Voice Listing Confirmed & Published: ${name} (${qty} kg @ ₹${price}/kg)!`);
+}
+
+/* =====================================================
+ FEATURE 7: "SHOULD I SELL NOW?" QUICK WIDGET
+===================================================== */
+
+function updateQuickSellCard(){
+    const crop = document.getElementById("quickCropSelect").value;
+    const data = {
+        Tomato:{ mandi:18, directMin:31, directMax:35, demand:"High (8.8/10)", supply:"Moderate (5.1/10)", trend:"↑ Upward (+8.2%)", rec:"Sell Now", badge:"badge-sell-now", reason:"Urban retail demand is surging by 14% with low local mandi arrivals. Sell now through AgriMithra to secure peak margins." },
+        Onion:{ mandi:16, directMin:27, directMax:30, demand:"High (8.2/10)", supply:"Moderate (6.0/10)", trend:"→ Stable (+4.5%)", rec:"Sell Now", badge:"badge-sell-now", reason:"Steady direct wholesale quotes from FPOs in Coimbatore with direct farm pickup available." },
+        Banana:{ mandi:22, directMin:37, directMax:41, demand:"High (9.1/10)", supply:"Low (4.2/10)", trend:"↑ Upward (+11.4%)", rec:"Sell Now", badge:"badge-sell-now", reason:"High festival and hotel demand in Coimbatore cluster; Grade A clusters receiving premium rates." },
+        Rice:{ mandi:34, directMin:52, directMax:56, demand:"Moderate (6.8/10)", supply:"High (7.8/10)", trend:"→ Stable (+1.8%)", rec:"Consider Waiting", badge:"badge-wait", reason:"Regional mill arrivals are peaking. Storage for 2–3 weeks is projected to gain an extra +₹4/kg." },
+        Chilli:{ mandi:75, directMin:115, directMax:128, demand:"High (9.4/10)", supply:"Low (3.8/10)", trend:"↑ Upward (+9.6%)", rec:"Sell Now", badge:"badge-sell-now", reason:"Export and spice extraction units in Erode seeking premium sun-dried batches." },
+        Turmeric:{ mandi:95, directMin:145, directMax:160, demand:"High (9.6/10)", supply:"Low (3.2/10)", trend:"↑ Upward (+12.8%)", rec:"Sell Now", badge:"badge-sell-now", reason:"High curcumin grade demand in Erode export cluster with immediate cash settlement." }
+    };
+
+    const d = data[crop] || data.Tomato;
+    document.getElementById("quickMandiPrice").innerText = `₹${d.mandi}/kg`;
+    document.getElementById("quickDirectPrice").innerText = `₹${d.directMin} – ₹${d.directMax}/kg`;
+    document.getElementById("quickDemandLevel").innerText = d.demand;
+    document.getElementById("quickSupplyLevel").innerText = d.supply;
+    document.getElementById("quickTrend").innerText = d.trend;
+    document.getElementById("quickBadgeContainer").innerHTML = `<span class="${d.badge}">⚡ ${d.rec}</span>`;
+    document.getElementById("quickReasonText").innerText = d.reason;
+
+    document.getElementById("heroCropSub").innerText = `${crop} • Grade A • 100 kg`;
+    document.getElementById("heroPriceDisplay").innerHTML = `₹${d.directMin} <small>/kg (Direct)</small>`;
+}
+
+/* =====================================================
+ STANDARD CRUD & MARKETPLACE
+===================================================== */
+
+async function fetchProductsFromAPI(){
+    try{
+        const res = await fetch(`${API_BASE_URL}/products`);
+        if(res.ok){
+            const json = await res.json();
+            if(json.data && json.data.length > 0) products = json.data;
+        }
+    }catch(e){}
+}
+
+function renderProducts(list=products){
+    const box = document.getElementById("products");
+    if(!box) return;
+
+    if(list.length === 0){
+        box.innerHTML = `<div class="tip">No produce found.</div>`;
+        return;
+    }
+
+    box.innerHTML = list.map(product => `
+        <div class="product">
+            <div class="product-image">
+                <span class="product-tag">VERIFIED FARMER</span>
+                ${product.icon || '🌾'}
+            </div>
+            <div class="product-body">
+                <h3>${product.name}</h3>
+                <div class="product-location">📍 ${product.location || product.loc || 'Tamil Nadu'}</div>
+                <div class="product-qty">${product.quantity ? product.quantity + ' kg' : (product.qty || '100 kg')} • Grade ${product.grade || 'A'}</div>
+                <div class="product-bottom">
+                    <div class="price">₹${product.price}<small>/kg</small></div>
+                    <button class="buy-btn" onclick="buyProduct('${product.name}', ${product.price})">Buy Now</button>
+                </div>
+                <div style="margin-top:6px">
+                    <button class="offer-btn" style="width:100%" onclick="makeOffer('${product.name}', ${product.price})">Make Offer</button>
+                </div>
+            </div>
+        </div>
+    `).join("");
+}
+
+function filterProducts(category, button){
+    document.querySelectorAll(".tab").forEach(btn => btn.classList.remove("active"));
+    if(button) button.classList.add("active");
+    if(category === "all") renderProducts(products);
+    else renderProducts(products.filter(item => (item.category === category || item.cat === category)));
+}
+
+function globalSearch(){
+    const input = document.getElementById("search");
+    if(!input) return;
+    const query = input.value.toLowerCase().trim();
+    if(!query) return;
+
+    showPage("market");
+    renderProducts(products.filter(product =>
+        (product.name && product.name.toLowerCase().includes(query)) ||
+        (product.loc && product.loc.toLowerCase().includes(query)) ||
+        (product.location && product.location.toLowerCase().includes(query))
+    ));
+}
+
+function openListing(){
+    document.getElementById("listingModal").style.display = "flex";
+}
+
+function closeListing(){
+    document.getElementById("listingModal").style.display = "none";
+}
+
+async function publishListing(){
+    const name = document.getElementById("cropName").value.trim();
+    const qty = document.getElementById("cropQty").value;
+    const grade = document.getElementById("cropGrade").value;
+    const price = document.getElementById("cropPrice").value;
+    const location = document.getElementById("cropLocation").value.trim();
+
+    if(!name || !qty || !price){
+        showToast("⚠️ Crop, quantity and price are required.");
+        return;
+    }
+
+    const item = {
+        id:"L" + Date.now(),
+        name,
+        qty,
+        grade,
+        price:Number(price),
+        location,
+        loc:location,
+        date:new Date().toLocaleDateString(),
+        status:"Active"
+    };
+
+    try{
+        await fetch(`${API_BASE_URL}/products`, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({ name, quantity: Number(qty), grade, price: Number(price), location })
+        });
+    }catch(e){}
+
+    myListings.push(item);
+    localStorage.setItem("agriListings", JSON.stringify(myListings));
+
+    updateListingCount();
+    closeListing();
+    renderMyCrops();
+    showToast("🌱 Produce successfully published to marketplace!");
+}
+
+function renderMyCrops(){
+    const box = document.getElementById("myCrops");
+    if(!box) return;
+
+    if(myListings.length === 0){
+        box.innerHTML = `
+            <div class="tip">
+                🌱 No custom listings yet.<br><br>
+                Add a crop using <b>New Listing</b> or <b>Sell by Voice</b>.
+            </div>
+        `;
+        return;
+    }
+
+    box.innerHTML = myListings.map((item, index) => `
+        <div class="offer">
+            <div class="offer-avatar">🌱</div>
+            <div class="offer-info">
+                <b>${item.name}</b>
+                <small>${item.qty} kg • Grade ${item.grade} • ${item.location || item.loc}</small>
+                <small>Listed ${item.date}</small>
+            </div>
+            <div class="offer-price">₹${item.price}/kg</div>
+            <button class="accept" onclick="deleteListing(${index})">Delete</button>
+        </div>
+    `).join("");
+}
+
+function deleteListing(index){
+    myListings.splice(index, 1);
+    localStorage.setItem("agriListings", JSON.stringify(myListings));
+    updateListingCount();
+    renderMyCrops();
+    showToast("Listing deleted.");
+}
+
+function updateListingCount(){
+    const el = document.getElementById("listingCount");
+    if(el) el.innerText = 8 + myListings.length;
+}
+
+/* =====================================================
+ OFFERS LOGIC
+===================================================== */
+
+function renderOffersPage(){
+    const box = document.getElementById("allOffersContainer");
+    const dashBox = document.getElementById("dashOffersContainer");
+
+    const content = buyerOffers.map((o, idx) => `
+        <div class="offer">
+            <div class="offer-avatar">${o.buyerAvatar || '🏪'}</div>
+            <div class="offer-info">
+                <div style="display:flex;align-items:center;gap:6px">
+                    <b>${o.buyerName}</b>
+                    <span class="factor-tag">${o.matchScore || 90}% Match</span>
+                </div>
+                <small>${o.crop} • ${o.quantity} kg • Grade ${o.grade || 'A'} • 📍 ${o.deliveryLocation || 'Coimbatore'}</small>
+            </div>
+            <div class="offer-price">₹${o.offeredPrice}/kg</div>
+            <button class="accept" onclick="acceptOffer('${o.buyerName}', '${o.crop}', ${o.quantity}, ${o.offeredPrice})">Accept</button>
+        </div>
+    `).join("");
+
+    if(box) box.innerHTML = content;
+    if(dashBox) dashBox.innerHTML = content;
+}
+
+function acceptOffer(name, crop='Produce', qty=100, price=32){
+    showToast(`✅ Offer accepted from ${name}! Creating confirmed direct order...`);
+    const newOrder = {
+        id: "AG" + Date.now().toString().slice(-7),
+        customer: name,
+        crop,
+        quantity: qty,
+        price,
+        total: qty * price,
+        farmer: "Ravi Kumar (Verified)",
+        location: "Coimbatore",
+        status: "CONFIRMED & PAID",
+        date: new Date().toLocaleString()
+    };
+    customerOrders.unshift(newOrder);
+    localStorage.setItem("customerOrders", JSON.stringify(customerOrders));
+    renderCustomerOrders();
+    renderAIOrders();
+}
+
+function makeOffer(crop, currentPrice){
+    const offer = prompt(`Enter your direct offer for ${crop}.\nCurrent recommended direct price: ₹${currentPrice}/kg`, currentPrice);
+    if(!offer) return;
+    showToast(`🤝 ₹${offer}/kg offer sent for ${crop}`);
+}
+
+/* =====================================================
+ CUSTOMER ORDERING & AI FULFILLMENT
+===================================================== */
+
+function openCustomerOrder(){
+    document.getElementById("customerModal").style.display = "flex";
+}
+
+function closeCustomerOrder(){
+    document.getElementById("customerModal").style.display = "none";
+}
+
+function submitCustomerOrder(){
+    const name = document.getElementById("modalCustomerName").value;
+    const request = document.getElementById("modalCustomerRequest").value;
+    const location = document.getElementById("modalCustomerLocation").value;
+
+    if(!request.trim()){
+        showToast("Please enter what you want to order.");
+        return;
+    }
+
+    document.getElementById("customerName").value = name;
+    document.getElementById("customerRequest").value = request;
+    document.getElementById("customerLocation").value = location;
+
+    closeCustomerOrder();
+    showPage("customer");
+    placeCustomerOrder();
+}
+
+function buyProduct(crop, currentPrice){
+    document.getElementById("customerRequest").value = `I need 200 kg ${crop} at ₹${currentPrice} per kg`;
+    document.getElementById("customerName").value = "Ravi Kumar";
+    document.getElementById("customerLocation").value = "Coimbatore";
+    showPage("customer");
+    showToast(`🛒 ${crop} added to your direct order`);
+}
+
+function placeCustomerOrder(){
+    const request = document.getElementById("customerRequest").value.trim();
+    const customer = document.getElementById("customerName").value.trim() || "Customer";
+    const location = document.getElementById("customerLocation").value.trim() || "Coimbatore";
+
+    if(!request){
+        showToast("Please enter what you need.");
+        return;
+    }
+
+    const result = document.getElementById("aiOrderResult");
+    result.innerHTML = `
+        <div class="loader">
+            <div class="spinner"></div>
+            <b>AgriMithra AI is matching farmer & optimizing logistics...</b>
+            <p style="font-size:9px;color:#748078;margin-top:7px">
+                Parsing requirement → Checking direct pricing → Assigning verified farmer → Booking shared mini-truck
+            </p>
+        </div>
+    `;
+
+    setTimeout(() => {
+        const parsed = parseCustomerRequest(request);
+        const farmer = findBestFarmer(parsed.crop);
+        const price = farmer ? farmer.price : (parsed.price || 34);
+        const quantity = parsed.quantity || 100;
+        const total = quantity * price;
+
+        const order = {
+            id: "AG" + Date.now().toString().slice(-7),
+            customer,
+            request,
+            crop: parsed.crop || "Tomato",
+            quantity,
+            price,
+            total,
+            location,
+            farmer: farmer ? farmer.name : "Verified Farmer Network",
+            status: "AI FULFILLED",
+            date: new Date().toLocaleString()
+        };
+
+        customerOrders.unshift(order);
+        localStorage.setItem("customerOrders", JSON.stringify(customerOrders));
+
+        try{
+            fetch(`${API_BASE_URL}/orders`, {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({
+                    customer,
+                    crop: order.crop,
+                    quantity,
+                    price,
+                    total,
+                    location,
+                    farmer: order.farmer,
+                    request
+                })
+            });
+        }catch(e){}
+
+        result.innerHTML = `
+            <div class="ai-understanding">
+                <h4>✅ Order Placed & Direct Farmer Matched</h4>
+                <div class="ai-row"><span>Order ID</span><b>#${order.id}</b></div>
+                <div class="ai-row"><span>Crop</span><b>🌱 ${order.crop}</b></div>
+                <div class="ai-row"><span>Quantity</span><b>⚖️ ${order.quantity} kg</b></div>
+                <div class="ai-row"><span>Direct Price</span><b>💰 ₹${order.price}/kg</b></div>
+                <div class="ai-row"><span>Farmer</span><b>👨‍🌾 ${order.farmer}</b></div>
+                <div class="ai-row"><span>Delivery</span><b>📍 ${order.location}</b></div>
+                <div class="ai-row"><span>Status</span><b>✅ ${order.status}</b></div>
+                <div class="total">Total: ₹${order.total.toLocaleString()}</div>
+                <button class="primary full" onclick="shareSpecificOrder('${order.id}')">
+                    📤 Share Order via WhatsApp
+                </button>
+            </div>
+        `;
+
+        renderAIOrders();
+        renderCustomerOrders();
+        showToast("✅ Direct farmer matched and shared transport arranged!");
+    }, 1400);
+}
+
+function parseCustomerRequest(text){
+    const speech = text.toLowerCase();
+    const cropMap = {
+        tomato:"Tomato", onion:"Onion", banana:"Banana", mango:"Mango", rice:"Rice", chilli:"Chilli", carrot:"Carrot",
+        "தக்காளி":"Tomato", "வெங்காயம்":"Onion", "வாழைப்பழம்":"Banana"
+    };
+
+    let crop = "Tomato";
+    for(const k in cropMap){ if(speech.includes(k)){ crop = cropMap[k]; break; } }
+
+    const qtyMatch = speech.match(/(\d+(?:\.\d+)?)\s*(kg|kgs|kilo|kilogram|கிலோ)/i);
+    const quantity = qtyMatch ? Number(qtyMatch[1]) : 100;
+
+    const priceMatch = speech.match(/(?:₹|rs|rupees|at|around|price)\s*(\d+(?:\.\d+)?)/i);
+    const price = priceMatch ? Number(priceMatch[1]) : null;
+
+    return { crop, quantity, price };
+}
+
+function findBestFarmer(crop){
+    const target = crop.toLowerCase();
+    const own = myListings.find(item => item.name.toLowerCase().includes(target));
+    if(own) return { name: "You / AgriMithra Farmer (Direct)", price: Number(own.price) };
+    const p = products.find(item => item.name.toLowerCase() === target);
+    if(p) return { name: `Verified Farmer • ${p.loc || p.location || 'Pollachi'}`, price: Number(p.price) };
+    return null;
+}
+
+function renderCustomerOrders(){
+    const box = document.getElementById("customerOrderHistory");
+    if(!box) return;
+
+    if(customerOrders.length === 0){
+        box.innerHTML = `<div class="tip">No customer orders placed yet.</div>`;
+        return;
+    }
+
+    box.innerHTML = customerOrders.map(order => `
+        <div class="order-card">
+            <div class="order-top">
+                <div class="order-id">#${order.id} • ${order.crop}</div>
+                <div class="order-status">${order.status}</div>
+            </div>
+            <div class="order-desc">
+                👤 ${order.customer} • ${order.quantity} kg • ₹${order.price}/kg<br>
+                👨‍🌾 Matched Farmer: ${order.farmer}<br>
+                📍 ${order.location}
+            </div>
+            <div class="progress">
+                <div class="progress-step done">✓</div>
+                <div class="progress-line done"></div>
+                <div class="progress-step done">✓</div>
+                <div class="progress-line done"></div>
+                <div class="progress-step">3</div>
+            </div>
+            <div class="progress-labels">
+                <span>Direct Order Placed</span>
+                <span>Farmer Matched</span>
+                <span>Delivered & Paid</span>
+            </div>
+            <button class="offer-btn" style="margin-top:10px" onclick="shareSpecificOrder('${order.id}')">
+                📤 Share Order
+            </button>
+        </div>
+    `).join("");
+}
+
+function renderAIOrders(){
+    const box = document.getElementById("aiOrdersList");
+    if(!box) return;
+
+    if(customerOrders.length === 0){
+        box.innerHTML = `<div class="tip">No AI fulfilled orders yet.</div>`;
+        return;
+    }
+
+    box.innerHTML = customerOrders.map(order => `
+        <div class="order-card">
+            <div class="order-top">
+                <div class="order-id">#${order.id} • ${order.crop}</div>
+                <div class="order-status">AI FULFILLED</div>
+            </div>
+            <div class="order-desc">
+                Customer: ${order.customer} • ${order.quantity} kg • ₹${order.price}/kg<br>
+                Farmer: ${order.farmer}
+            </div>
+            <div style="margin-top:6px;color:#278143;font-size:9px;font-weight:700">
+                ✓ Fair Price Verified • ✓ Zero Middleman Cut • ✓ Shared Freight
+            </div>
+        </div>
+    `).join("");
+}
+
+function shareCustomerOrder(){
+    const request = document.getElementById("customerRequest").value.trim();
+    const name = document.getElementById("customerName").value;
+    const location = document.getElementById("customerLocation").value;
+
+    if(!request){
+        showToast("Enter an order before sharing.");
+        return;
+    }
+
+    const message = `🌾 AgriMithra Direct Order\n👤 Customer: ${name}\n🛒 Requirement: ${request}\n📍 Delivery: ${location}\n🤖 Fulfill directly with fair farmer pricing.`;
+    window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank");
+}
+
+function shareSpecificOrder(id){
+    const order = customerOrders.find(item => item.id === id);
+    if(!order) return;
+    const message = `🌾 AgriMithra Direct Order #${order.id}\n👤 Customer: ${order.customer}\n🌱 Crop: ${order.crop} (${order.quantity} kg @ ₹${order.price}/kg)\n💵 Total: ₹${order.total}\n👨‍🌾 Farmer: ${order.farmer}\n📍 Delivery: ${order.location}`;
+    window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank");
+}
+
+/* =====================================================
+ UTILITY FUNCTIONS
+===================================================== */
+
+function openProfile(){
+    showToast("👨‍🌾 Logged in as: Ravi Kumar (Verified Organic Farmer, Pollachi)");
+}
+
+function toggleLanguage(){
+    showToast("🇮🇳 தமிழ் மொழி பயன்முறை இயக்கப்பட்டது (Tamil Mode Active)");
+}
+
+function showToast(message){
+    const toast = document.getElementById("toast");
+    toast.innerText = message;
+    toast.style.display = "block";
+    clearTimeout(window.toastTimer);
+    window.toastTimer = setTimeout(() => {
+        toast.style.display = "none";
+    }, 3500);
+}
+
+// Close modals when clicking outside
+document.querySelectorAll(".modal-bg").forEach(modal => {
+    modal.addEventListener("click", function(event){
+        if(event.target === modal) modal.style.display = "none";
+    });
+});
+
+/* =====================================================
+ INITIALIZATION
+===================================================== */
+
+checkBackendConnection();
+fetchProductsFromAPI();
+renderProducts();
+renderMyCrops();
+renderOffersPage();
+renderSmartBuyerMatches();
+renderTransportRoutes();
+renderAIOrders();
+renderCustomerOrders();
+updateListingCount();
+updateQuickSellCard();
+
+</script>
+
+</body>
+</html>

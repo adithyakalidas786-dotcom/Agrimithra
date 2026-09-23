@@ -1,0 +1,19 @@
+{
+  "name": "agrimithra",
+  "version": "4.0.0",
+  "description": "AgriMithra - Empowering farmers with transparent direct pricing, explainability, profit loss simulation, buyer matching, and shared logistics.",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "node backend/server.js",
+    "seed": "node backend/seed/seedData.js"
+  },
+  "keywords": [
+    "agritech",
+    "fair-pricing",
+    "direct-selling",
+    "hackathon",
+    "smart-decision-center"
+  ],
+  "author": "AgriMithra Team",
+  "license": "MIT"
+}
