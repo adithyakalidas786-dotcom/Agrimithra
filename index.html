@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>AgriMithra | Smart Agricultural Decision & Direct Selling Platform</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <div class="brand">
+        <div class="logo">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#b6ef55"/>
+                        <stop offset="1" stop-color="#31b65c"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="43" fill="url(#lg)" opacity=".95"/>
+                <path d="M18 57 C33 49 43 48 50 50 C58 48 68 49 82 57 C74 72 62 81 50 82 C37 81 25 72 18 57Z" fill="#073c22"/>
+                <path d="M50 81 C48 67 48 47 57 28" stroke="#b7ed55" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <path d="M54 35 C67 26 76 29 81 22 C80 37 70 44 54 43Z" fill="#ecfbcb"/>
+                <path d="M46 43 C32 35 24 37 20 29 C33 28 43 31 46 43Z" fill="#ecfbcb"/>
+                <circle cx="51" cy="21" r="8" fill="#ffd65a"/>
+                <path d="M51 5v9M40 9l6 7M62 9l-6 7" stroke="#ffd65a" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="brand-text">
+            <div class="brand-title">AgriMithra</div>
+            <div class="brand-subtitle">FARMERS • FOOD • FUTURE</div>
+        </div>
+    </div>
+
+    <div class="menu-title">DECISION & INTELLIGENCE</div>
+
+    <button class="nav-btn active" onclick="showPage('dashboard',this)">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+    </button>
+
+    <button class="nav-btn" style="background:rgba(154,230,79,.12);border:1px solid rgba(154,230,79,.3)" onclick="showPage('decisionCenter',this)">
+        <span class="nav-icon">🧠</span>
+        <span>Smart Decision Center</span>
+        <span class="nav-badge">NEW</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('profitSimulator',this)">
+        <span class="nav-icon">💰</span>
+        <span>Profit Simulator</span>
+        <span class="nav-badge">NEW</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('buyerMatch',this)">
+        <span class="nav-icon">🤝</span>
+        <span>Smart Buyer Match</span>
+        <span class="nav-badge">NEW</span>
+    </button>
+
+    <div class="menu-title">FARMER MARKETPLACE</div>
+
+    <button class="nav-btn" onclick="showPage('market',this)">
+        <span class="nav-icon">🛒</span>
+        <span>Marketplace</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('crops',this)">
+        <span class="nav-icon">🌱</span>
+        <span>My Crops</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('offers',this)">
+        <span class="nav-icon">💬</span>
+        <span>Offers</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('orders',this)">
+        <span class="nav-icon">📦</span>
+        <span>Orders & Payments</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('logistics',this)">
+        <span class="nav-icon">🚚</span>
+        <span>Shared Logistics</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('analytics',this)">
+        <span class="nav-icon">📊</span>
+        <span>Analytics</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('weather',this)">
+        <span class="nav-icon">🌦️</span>
+        <span>Weather Intelligence</span>
+    </button>
+
+    <div class="menu-title">DIRECT CUSTOMER</div>
+
+    <button class="nav-btn" onclick="showPage('customer',this)">
+        <span class="nav-icon">🛍️</span>
+        <span>Place Customer Order</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('customerOrders',this)">
+        <span class="nav-icon">📋</span>
+        <span>Customer Orders</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('aiorders',this)">
+        <span class="nav-icon">🤖</span>
+        <span>AI Fulfillment</span>
+    </button>
+
+    <div class="sidebar-bottom">
+        <button class="voice-nav" onclick="openListingVoice()">
+            🎙️ &nbsp; Sell by Voice (தமிழ்/Eng)
+        </button>
+        <div class="sidebar-footer">
+            <b>AgriMithra v4.0 (Hackathon Edition)</b><br>
+            Empowering farmers with transparent direct pricing, explainability & shared logistics.
+        </div>
+    </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+<header class="topbar">
+    <div class="search">
+        <span class="search-icon">🔎</span>
+        <input id="search" placeholder="Search crops, buyers, locations, orders..." oninput="globalSearch()">
+    </div>
+
+    <div class="top-actions">
+        <div class="api-status-pill" id="backendStatusPill" title="Connected to Node.js / Express API">
+            <span class="status-dot"></span>
+            <span id="backendStatusText">API Connected</span>
+        </div>
+        <button class="icon-btn" onclick="showToast('🔔 3 new direct buyer requests near Pollachi & Coimbatore')">🔔</button>
+        <button class="icon-btn language-btn" onclick="toggleLanguage()">தமிழ்</button>
+        <button class="profile" onclick="openProfile()">
+            <span class="avatar">🌱</span>
+            <span>Guest Farmer</span>
+        </button>
+    </div>
+</header>
+
+<div class="container">
+
+<!-- HACKATHON CORE VALUE BANNER -->
+<div class="hackathon-banner">
+    <div>
+        💡 <b>Core Problem Solved:</b> Multiple Intermediaries reduce farmers' earnings by 40–55%. AgriMithra helps you decide <b>WHEN</b> to sell, <b>WHERE</b> to sell, <b>AT WHAT PRICE</b> to sell, and <b>HOW</b> to reduce delivery costs.
+    </div>
+    <button class="secondary" style="padding:5px 10px;font-size:10px;" onclick="showPage('decisionCenter')">
+        Open Decision Center →
+    </button>
+</div>
+
+<!-- 1. DASHBOARD -->
+<section id="dashboard" class="page">
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">● LIVE SMART AGRI MARKET & INTELLIGENCE</span>
+            <h1>Fair Prices.<br><span>Direct Selling. Zero Middlemen.</span></h1>
+            <p>
+                AgriMithra connects farmers directly with verified retail, FPO, and commercial buyers.
+                Eliminate intermediary exploitation with rule-based price explainability,
+                profit simulators, voice selling in Tamil/English, and pooled mini-truck logistics.
+            </p>
+            <div class="hero-actions">
+                <button class="primary" onclick="showPage('decisionCenter')">🧠 Smart Decision Center</button>
+                <button class="secondary" onclick="showPage('profitSimulator')">💰 Profit Loss Simulator</button>
+                <button class="secondary" onclick="openListingVoice()">🎙️ Sell by Voice</button>
+                <button class="secondary" onclick="showPage('market')">🛒 Browse Marketplace</button>
+            </div>
+        </div>
+
+        <div class="hero-ai">
+            <div class="ai-card">
+                <div class="ai-head">
+                    <b>🤖 AI Price Intelligence</b>
+                    <span class="live">● Market Live</span>
+                </div>
+                <div class="ai-crop" id="heroCropSub">Tomato • Grade A • 100 kg</div>
+                <div class="ai-price" id="heroPriceDisplay">₹31 <small>/kg ↑ 8.2% (Direct)</small></div>
+                <div class="chart">
+                    <span style="height:28%"></span>
+                    <span style="height:40%"></span>
+                    <span style="height:37%"></span>
+                    <span style="height:58%"></span>
+                    <span style="height:51%"></span>
+                    <span style="height:78%"></span>
+                    <span style="height:91%"></span>
+                </div>
+                <div class="ai-tip">
+                    💡 <b>Direct Recommendation: ₹31 – ₹35/kg</b><br>
+                    Local mandi pays ₹18/kg. Direct trade earns you <b>+₹13/kg (+72%)</b> more!
+                    <button class="offer-btn" style="margin-top:6px;width:100%;font-size:9px;" onclick="openWhyPriceModal('Tomato')">
+                        🔍 Why this price?
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-top"><span class="stat-label">TOTAL REVENUE</span><div class="stat-icon">💰</div></div>
+            <span class="stat-value" id="dashTotalRevenue">₹18,450</span>
+            <span class="stat-growth">↑ 14.5% direct trade</span>
+        </div>
+        <div class="stat">
+            <div class="stat-top"><span class="stat-label">ADDITIONAL INCOME GAINED</span><div class="stat-icon">📈</div></div>
+            <span class="stat-value" style="color:#16703b" id="dashExtraIncome">+₹5,680</span>
+            <span class="stat-growth">vs traditional middleman</span>
+        </div>
+        <div class="stat">
+            <div class="stat-top"><span class="stat-label">TRANSPORT SAVED</span><div class="stat-icon">🚚</div></div>
+            <span class="stat-value" style="color:#1b6be0" id="dashTransportSavings">₹3,420</span>
+            <span class="stat-growth">via shared mini-trucks</span>
+        </div>
+        <div class="stat">
+            <div class="stat-top"><span class="stat-label">ACTIVE LISTINGS</span><div class="stat-icon">🌱</div></div>
+            <span class="stat-value" id="listingCount">8</span>
+            <span class="stat-growth">3 receiving direct offers</span>
+        </div>
+        <div class="stat">
+            <div class="stat-top"><span class="stat-label">VERIFIED BUYERS</span><div class="stat-icon">🤝</div></div>
+            <span class="stat-value">128</span>
+            <span class="stat-growth">24 within 30 km</span>
+        </div>
+    </div>
+
+    <!-- SHOULD I SELL NOW CARD -->
+    <div class="card" style="border:2px solid #bce1be;background:linear-gradient(135deg,#ffffff,#f7fdf6);">
+        <div class="card-header">
+            <div>
+                <h3>🧠 Should I Sell Now? — Quick Farm Intelligence</h3>
+                <small>Real-time algorithmic decision evaluation based on regional market signals</small>
+            </div>
+            <button class="primary" style="padding:6px 12px;font-size:10px;" onclick="showPage('decisionCenter')">
+                Open Full Decision Center →
+            </button>
+        </div>
+
+        <div class="three-col">
+            <div style="padding:14px;background:#fbfefb;border-radius:12px;border:1px solid #e1eee0;">
+                <small style="font-size:9px;color:var(--muted);font-weight:800;">SELECT CROP TO EVALUATE</small>
+                <div style="margin-top:6px;display:flex;gap:6px;">
+                    <select id="quickCropSelect" class="input" onchange="updateQuickSellCard()">
+                        <option value="Tomato">🍅 Tomato (Grade A)</option>
+                        <option value="Onion">🧅 Onion (Grade A)</option>
+                        <option value="Banana">🍌 Banana (Robusta)</option>
+                        <option value="Rice">🌾 Rice (Ponni Raw)</option>
+                        <option value="Chilli">🌶️ Chilli (Hot Red)</option>
+                        <option value="Turmeric">🟡 Turmeric (High Curcumin)</option>
+                    </select>
+                </div>
+                <div style="margin-top:12px;font-size:11px;color:var(--muted);line-height:1.5;">
+                    <div>Mandi Rate: <b id="quickMandiPrice" style="color:#2a3630">₹18/kg</b></div>
+                    <div>Direct Potential: <b id="quickDirectPrice" style="color:#13783f">₹31 – ₹35/kg</b></div>
+                </div>
+            </div>
+
+            <div style="padding:14px;background:#fbfefb;border-radius:12px;border:1px solid #e1eee0;">
+                <small style="font-size:9px;color:var(--muted);font-weight:800;">MARKET PRESSURE & SIGNALS</small>
+                <div style="margin-top:8px;font-size:11px;line-height:1.6;">
+                    <div style="display:flex;justify-content:space-between"><span>Demand Level:</span><b id="quickDemandLevel" style="color:#1b7c3d">High (8.8/10)</b></div>
+                    <div style="display:flex;justify-content:space-between"><span>Supply Level:</span><b id="quickSupplyLevel">Moderate (5.1/10)</b></div>
+                    <div style="display:flex;justify-content:space-between"><span>Price Trend:</span><b id="quickTrend" style="color:#177d3c">↑ Upward (+8.2%)</b></div>
+                </div>
+            </div>
+
+            <div style="padding:14px;background:#eef8eb;border-radius:12px;border:1px solid #c9e6c5;display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                    <small style="font-size:9px;color:var(--muted);font-weight:800;">ALGORITHMIC RECOMMENDATION</small>
+                    <div style="margin-top:6px;" id="quickBadgeContainer"><span class="badge-sell-now">⚡ Sell Now (High Direct Demand)</span></div>
+                    <p style="font-size:10px;margin-top:6px;color:#244c33;line-height:1.4;" id="quickReasonText">
+                        Urban retail demand is surging by 14% with low local mandi arrivals. Sell now through AgriMithra to secure peak margins.
+                    </p>
+                </div>
+                <div style="display:flex;gap:6px;margin-top:10px;">
+                    <button class="primary" style="flex:1;padding:6px 10px;font-size:9px;" onclick="openListing()">＋ List Crop</button>
+                    <button class="secondary" style="flex:1;padding:6px 10px;font-size:9px;" onclick="openWhyPriceModal(document.getElementById('quickCropSelect').value)">Why this price?</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top:10px;font-size:9px;color:#8a998e;text-align:right;">
+            ℹ️ Market benchmark signals sourced from APMC Mandi benchmarks and active regional B2B buyer request logs.
+        </div>
+    </div>
+
+    <div class="two-col">
+        <!-- OFFERS -->
+        <div class="card">
+            <div class="card-header">
+                <h3>🔥 Recent Buyer Direct Offers</h3>
+                <button class="offer-btn" onclick="showPage('offers')">View all →</button>
+            </div>
+            <div id="dashOffersContainer"></div>
+        </div>
+
+        <!-- SHARED TRANSPORT OPTIMIZER QUICK WIDGET -->
+        <div class="card">
+            <div class="card-header">
+                <h3>🚚 Shared Transport Optimizer</h3>
+                <small style="color:#258243">● 3 Pooled Trucks Available</small>
+            </div>
+            <div class="route">
+                <div class="route-point"><div>📍</div><small>Pollachi</small></div>
+                <div class="route-line"></div>
+                <div class="route-point"><div>🚛</div><small>Pooled Tata Ace</small></div>
+                <div class="route-line"></div>
+                <div class="route-point"><div>🏪</div><small>Coimbatore</small></div>
+            </div>
+            <div class="driver">
+                <div class="driver-icon">🚛</div>
+                <div class="driver-info">
+                    <b>Arun Logistics (Shared Truck #TN38)</b>
+                    <small>Mini Truck • 450/800 kg booked • 3 Farmers Pooled</small>
+                </div>
+                <div style="text-align:right">
+                    <b style="color:#14703a;font-size:14px">₹420</b>
+                    <small style="display:block;color:#7e8b83;text-decoration:line-through;font-size:8px">₹1,200 solo</small>
+                </div>
+            </div>
+            <div style="margin-top:10px;font-size:10px;color:#206e39;background:#eff7ee;padding:8px;border-radius:8px;">
+                💡 <b>Shared Savings: ₹780 (65%)</b> saved per trip by sharing freight capacity with adjacent farms.
+            </div>
+            <button class="primary full" onclick="joinSharedTransportAction('trans_100', 'Tomato', 100)">
+                Join Shared Transport Slot
+            </button>
+        </div>
+    </div>
+
+    <!-- VOICE SELLING PROMO -->
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h3>🎙️ Natural Voice Selling (தமிழ் & English)</h3>
+                <small>Sell your produce in seconds simply by speaking</small>
+            </div>
+            <button class="primary" onclick="openListingVoice()">Start Voice Listing 🎙️</button>
+        </div>
+        <div class="voice-box">
+            <div class="voice-icon">🎙️</div>
+            <div class="voice-info">
+                <b>Speak naturally in English or Tamil with zero typing</b>
+                <p>
+                    Example: “Tomato 200 kg 35 rupees” or “Enakku 200 kilo tomato irukku, kilo 32 rupees-ku sell panna poren”
+                    <br>
+                    AgriMithra extracts crop, quantity, and price, then shows you a <b>Confirmation Screen</b> before publishing!
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2. SMART DECISION CENTER -->
+<section id="decisionCenter" class="page hidden">
+    <div class="page-title">
+        <small>AGRIMITHRA SMART DECISION CENTER</small>
+        <h2>Farmer Smart Decision Center</h2>
+        <p>Make transparent, data-driven selling decisions. Enter your crop parameters below to calculate fair recommended selling prices, logistics savings, net farm profit, and clear actionable guidance.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>🌱 1. Enter Your Crop & Harvest Details</h3>
+            <small>Rule-based algorithmic price & profit modeling</small>
+        </div>
+
+        <div class="decision-form-grid">
+            <div class="form-group">
+                <label class="form-label">Crop Name</label>
+                <select id="dcCrop" class="input" onchange="runDecisionCenterEngine()">
+                    <option value="Tomato">🍅 Tomato</option>
+                    <option value="Onion">🧅 Onion</option>
+                    <option value="Banana">🍌 Banana</option>
+                    <option value="Rice">🌾 Rice</option>
+                    <option value="Chilli">🌶️ Chilli</option>
+                    <option value="Mango">🥭 Mango</option>
+                    <option value="Carrot">🥕 Carrot</option>
+                    <option value="Turmeric">🟡 Turmeric</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Quantity (kg)</label>
+                <input id="dcQty" type="number" class="input" value="200" oninput="runDecisionCenterEngine()">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Quality / Grade</label>
+                <select id="dcGrade" class="input" onchange="runDecisionCenterEngine()">
+                    <option value="A">Grade A (Premium / Export Quality)</option>
+                    <option value="B">Grade B (Standard Market Quality)</option>
+                    <option value="C">Grade C (Local Processing / Fair)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Farm Location</label>
+                <input id="dcLocation" class="input" value="Pollachi, Tamil Nadu" oninput="runDecisionCenterEngine()">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Expected Price (₹/kg) [Optional]</label>
+                <input id="dcExpectedPrice" type="number" class="input" placeholder="e.g. 35" value="34" oninput="runDecisionCenterEngine()">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Harvest Date</label>
+                <input id="dcHarvestDate" type="date" class="input">
+            </div>
+        </div>
+
+        <div style="display:flex;gap:10px;">
+            <button class="primary" onclick="runDecisionCenterEngine()">⚡ Calculate Smart Decision & Profit</button>
+            <button class="secondary" onclick="openWhyPriceModal(document.getElementById('dcCrop').value)">🔍 Why this price? (Explanation)</button>
+        </div>
+
+        <!-- DECISION RESULTS PANEL -->
+        <div class="decision-result-panel" id="dcResultPanel">
+            <div class="decision-header-row">
+                <div>
+                    <small style="font-size:9px;color:var(--muted);font-weight:800;text-transform:uppercase;">RECOMMENDED DIRECT SELLING PRICE</small>
+                    <div class="decision-price-display" id="dcPriceRangeDisplay">₹36 – ₹40 <small style="font-size:14px;color:#248348">/ kg</small></div>
+                    <div style="font-size:11px;color:#456752;">
+                        Local Mandi Benchmark: <b id="dcMandiPriceDisplay">₹18/kg</b> • Direct Advantage: <b id="dcDirectAdvantageDisplay">+₹18 to +₹22/kg (+110%)</b>
+                    </div>
+                </div>
+                <div style="text-align:right">
+                    <small style="font-size:9px;color:var(--muted);font-weight:800;text-transform:uppercase;display:block;margin-bottom:4px;">DECISION RECOMMENDATION</small>
+                    <div id="dcRecommendationBadge"><span class="badge-sell-now">⚡ Sell Now (High Buyer Demand)</span></div>
+                </div>
+            </div>
+
+            <div class="decision-metrics-grid">
+                <div class="decision-metric-box">
+                    <small>Estimated Gross Revenue</small>
+                    <b id="dcRevenue" style="color:#13783f">₹7,600</b>
+                    <span style="font-size:9px;color:#6b8072">for 200 kg</span>
+                </div>
+                <div class="decision-metric-box">
+                    <small>Estimated Transport Cost</small>
+                    <b id="dcTransport" style="color:#e06b1b">₹410</b>
+                    <span style="font-size:9px;color:#208a46">₹718 saved via pooling</span>
+                </div>
+                <div class="decision-metric-box">
+                    <small>Estimated Net Profit</small>
+                    <b id="dcNetProfit" style="color:#116e37">₹7,190</b>
+                    <span style="font-size:9px;color:#208a46">+78% vs Mandi sale</span>
+                </div>
+                <div class="decision-metric-box">
+                    <small>Buyer Demand Index</small>
+                    <b id="dcDemandIndex" style="color:#2a7cf0">High (8.8/10)</b>
+                    <span style="font-size:9px;color:#6b8072">16 active buyers</span>
+                </div>
+            </div>
+
+            <div class="reasons-box">
+                <b style="font-size:12px;color:var(--dark);">📋 Main Reasons Behind This Recommendation:</b>
+                <ul id="dcReasonsList">
+                    <li>High active direct buyer quote volume in Pollachi and Coimbatore retail clusters.</li>
+                    <li>Direct pricing delivers ~₹20/kg more than local village intermediaries.</li>
+                    <li>Grade A quality earns an additional +15% premium in direct buyer matching.</li>
+                </ul>
+            </div>
+
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+                <button class="primary" onclick="proceedToPublishFromDecision()">🌱 Publish Direct Listing with This Price</button>
+                <button class="secondary" onclick="showPage('buyerMatch')">🤝 View Matched Direct Buyers →</button>
+                <button class="secondary" onclick="openWhyPriceModal(document.getElementById('dcCrop').value)">🔍 View Detailed 7-Factor Breakdown</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. PROFIT LOSS SIMULATOR -->
+<section id="profitSimulator" class="page hidden">
+    <div class="page-title">
+        <small>INTERMEDIARY EXPLOITATION ANALYSIS</small>
+        <h2>How Much Are You Losing to Intermediaries?</h2>
+        <p>Traditional agricultural supply chains pass produce through 4–5 intermediaries before reaching consumers. Compare what you earn traditionally versus selling directly through AgriMithra.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>📊 Interactive Supply Chain Simulator</h3>
+            <small>Adjust crop and volume to see real financial difference</small>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="form-label">Crop Name</label>
+                <select id="simCrop" class="input" onchange="runProfitSimulatorEngine()">
+                    <option value="Tomato">🍅 Tomato</option>
+                    <option value="Onion">🧅 Onion</option>
+                    <option value="Banana">🍌 Banana</option>
+                    <option value="Rice">🌾 Rice</option>
+                    <option value="Chilli">🌶️ Chilli</option>
+                    <option value="Mango">🥭 Mango</option>
+                    <option value="Carrot">🥕 Carrot</option>
+                    <option value="Turmeric">🟡 Turmeric</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Harvest Quantity (kg)</label>
+                <input id="simQty" type="number" class="input" value="500" oninput="runProfitSimulatorEngine()">
+            </div>
+        </div>
+
+        <div class="sim-chain-grid">
+            <!-- TRADITIONAL CHAIN -->
+            <div class="sim-card-traditional">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                    <div>
+                        <b style="color:#ba322b;font-size:14px">Traditional Supply Chain</b>
+                        <small style="display:block;color:var(--muted);font-size:9px">5-Stage Middleman Model</small>
+                    </div>
+                    <span style="font-size:18px">❌</span>
+                </div>
+
+                <div class="chain-step"><span>1. Farmer (You)</span><b id="simTradFarmerPrice">₹18/kg (42% share)</b></div>
+                <div class="chain-step"><span>2. Village Aggregator / Trader</span><b id="simTradTraderPrice">₹24/kg (+₹6 cut)</b></div>
+                <div class="chain-step"><span>3. Mandi Commission & Wholesaler</span><b id="simTradWholesalePrice">₹30/kg (+₹6 cut)</b></div>
+                <div class="chain-step"><span>4. Urban Retailer / Vendor</span><b id="simTradRetailPrice">₹42/kg (+₹12 cut)</b></div>
+                <div class="chain-step" style="background:#fff2f0;border-color:#f5c4be;"><span>5. End Consumer Pays</span><b id="simTradConsumerPrice">₹42/kg</b></div>
+
+                <div style="margin-top:14px;padding-top:10px;border-top:1px solid #f2dbd9;">
+                    <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;">
+                        <span>Your Revenue:</span><b id="simTradRevenue" style="color:#b32424">₹9,000</b>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:11px;color:#ba322b">
+                        <span>Intermediary Margin Lost:</span><b id="simTradMarginLost">₹12,000</b>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIRECT AGRIMITHRA CHAIN -->
+            <div class="sim-card-direct">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                    <div>
+                        <b style="color:#14733c;font-size:14px">AgriMithra Direct Trade</b>
+                        <small style="display:block;color:var(--muted);font-size:9px">Transparent Direct Connection</small>
+                    </div>
+                    <span style="font-size:18px">✅</span>
+                </div>
+
+                <div class="chain-step" style="background:#eaf8eb;border-color:#b9eabf;"><span>1. Farmer on AgriMithra (You)</span><b id="simDirectFarmerPrice" style="color:#13783f">₹33/kg (87% share)</b></div>
+                <div class="chain-step"><span>2. Shared Green Logistics</span><b id="simDirectTransportPerKg">₹2/kg (Pooled Mini-truck)</b></div>
+                <div class="chain-step" style="background:#f4fbf2;border-color:#c8ebd0;"><span>3. Verified Buyer / Retailer</span><b id="simDirectBuyerFinalPrice">₹37/kg (Buyer saves 12%)</b></div>
+
+                <div style="padding:10px;background:white;border-radius:10px;border:1px solid #d3ead7;margin:8px 0;font-size:10px;color:#206338;">
+                    ✓ Zero commission agent deductions<br>
+                    ✓ Instant UPI payment on doorstep inspection<br>
+                    ✓ Fair pricing transparency for both farmer & buyer
+                </div>
+
+                <div style="margin-top:14px;padding-top:10px;border-top:1px solid #cce8d0;">
+                    <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;">
+                        <span>Direct Gross Revenue:</span><b id="simDirectRevenue" style="color:#13783f">₹16,500</b>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)">
+                        <span>Shared Transport Cost:</span><b id="simDirectTransportCost">₹1,000</b>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:800;color:#13783f;margin-top:4px;">
+                        <span>Net Amount Received:</span><b id="simDirectNetReceived">₹15,500</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sim-gain-highlight">
+            <div>
+                <span style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#cbf59f;font-weight:800;">YOUR DIRECT SELLING ADVANTAGE</span>
+                <div style="margin-top:2px;font-size:15px;font-weight:700;">
+                    Potential Additional Income: <b id="simExtraGainDisplay">+₹6,500 (+72.2%)</b>
+                </div>
+                <small style="color:#d5e8dc;font-size:10px;display:block;margin-top:3px;">
+                    By cutting middleman markups, you retain 87% of the buyer value instead of only 42%.
+                </small>
+            </div>
+            <button class="secondary" onclick="showPage('decisionCenter')">
+                Calculate for My Produce →
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- 4. SMART BUYER MATCHING -->
+<section id="buyerMatch" class="page hidden">
+    <div class="page-title">
+        <small>AI-ASSISTED MATCHING</small>
+        <h2>Smart Buyer Match</h2>
+        <p>Algorithmic buyer matching based on crop, volume requirements, offered price proximity, distance, and payment reliability. Matches are scored as compatibility percentages.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>🤝 Verified Buyer Network</h3>
+            <div style="display:flex;gap:6px;">
+                <select id="buyerMatchCropFilter" class="input" style="width:auto;padding:6px 12px;font-size:10px;" onchange="renderSmartBuyerMatches()">
+                    <option value="all">All Crops</option>
+                    <option value="Tomato">Tomato Buyers</option>
+                    <option value="Onion">Onion Buyers</option>
+                    <option value="Banana">Banana Buyers</option>
+                    <option value="Chilli">Chilli Buyers</option>
+                    <option value="Turmeric">Turmeric Buyers</option>
+                </select>
+            </div>
+        </div>
+        <div id="smartBuyerList"></div>
+    </div>
+</section>
+
+<!-- 5. MARKETPLACE -->
+<section id="market" class="page hidden">
+    <div class="page-title">
+        <small>LIVE MARKETPLACE</small>
+        <h2>Fresh Produce From Farmers</h2>
+        <p>Customers and commercial buyers can directly buy or send direct offers to farmers.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>🌾 Available Produce</h3>
+            <button class="primary" onclick="openListing()">＋ Add Produce</button>
+        </div>
+        <div class="tabs">
+            <button class="tab active" onclick="filterProducts('all',this)">All</button>
+            <button class="tab" onclick="filterProducts('vegetable',this)">Vegetables</button>
+            <button class="tab" onclick="filterProducts('fruit',this)">Fruits</button>
+            <button class="tab" onclick="filterProducts('grain',this)">Grains</button>
+            <button class="tab" onclick="filterProducts('spice',this)">Spices</button>
+        </div>
+        <div class="products" id="products"></div>
+    </div>
+</section>
+
+<!-- 6. MY CROPS -->
+<section id="crops" class="page hidden">
+    <div class="page-title">
+        <small>FARMER INVENTORY</small>
+        <h2>My Crops</h2>
+        <p>Manage and track produce listed by you.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>🌱 My Active Listings</h3>
+            <button class="primary" onclick="openListing()">＋ New Listing</button>
+        </div>
+        <div id="myCrops"></div>
+    </div>
+</section>
+
+<!-- 7. OFFERS -->
+<section id="offers" class="page hidden">
+    <div class="page-title">
+        <small>BUYER DEMAND</small>
+        <h2>Buyer Offers & Negotiations</h2>
+        <p>Accept, counter, or review direct purchase offers from verified buyers.</p>
+    </div>
+
+    <div class="card">
+        <div id="allOffersContainer"></div>
+    </div>
+</section>
+
+<!-- 8. ORDERS -->
+<section id="orders" class="page hidden">
+    <div class="page-title">
+        <small>FARMER ORDERS</small>
+        <h2>Orders & Payments</h2>
+    </div>
+
+    <div id="farmerOrders"></div>
+
+    <div class="card" style="background:linear-gradient(120deg,#103b24,#287445);color:white">
+        <small style="color:#bfdcc7">AVAILABLE WALLET BALANCE (DIRECT UPI ESCROW)</small>
+        <div style="font-size:32px;font-weight:800;margin:8px 0">₹18,450</div>
+        <small>UPI Connected • Instant settlement enabled • Last payment received ₹5,700</small>
+    </div>
+</section>
+
+<!-- 9. SHARED LOGISTICS -->
+<section id="logistics" class="page hidden">
+    <div class="page-title">
+        <small>SHARED LOGISTICS OPTIMIZER</small>
+        <h2>Shared Transport Optimizer</h2>
+        <p>Reduce freight costs by up to 65% by pooling Tata Ace mini-trucks with farmers sharing compatible routes and pickup schedules.</p>
+    </div>
+
+    <div class="card">
+        <div class="transport-savings-banner">
+            <div>
+                <small style="font-size:9px;font-weight:800;letter-spacing:1px;color:#206e39;text-transform:uppercase;">SHARED FREIGHT BENEFIT</small>
+                <div style="margin-top:3px;font-size:16px;font-weight:800;color:#0a3a1f;">
+                    Estimated Transport Savings: <b>₹780 (65%)</b>
+                </div>
+                <p style="font-size:10px;color:#456752;margin-top:2px;">
+                    Individual solo truck hire: ₹1,200 | AgriMithra Pooled route: ₹420
+                </p>
+            </div>
+            <button class="primary" onclick="joinSharedTransportAction('trans_100', 'Tomato', 200)">
+                Join Shared Transport
+            </button>
+        </div>
+
+        <div class="card-header">
+            <h3>🚛 Available Pooled Transport Routes</h3>
+            <small style="color:#1d7940">● Real-time booking</small>
+        </div>
+        <div id="transportRoutesContainer"></div>
+    </div>
+</section>
+
+<!-- 10. ANALYTICS -->
+<section id="analytics" class="page hidden">
+    <div class="page-title">
+        <small>AI FARMER INTELLIGENCE</small>
+        <h2>Farmer Earnings Analytics</h2>
+        <p>Comprehensive breakdown of your direct-selling revenues, intermediary cost savings, and crop performance metrics.</p>
+    </div>
+
+    <div class="stats" style="grid-template-columns:repeat(4,1fr);">
+        <div class="stat">
+            <div class="stat-top"><span class="stat-label">TOTAL SALES</span><div class="stat-icon">📦</div></div>
+            <span class="stat-value">24</span>
+            <span class="stat-growth">18 Completed • 6 Pending</span>
+        </div>
+        <div class="stat">
+            <div class="stat-top"><span class="stat-label">TOTAL REVENUE</span><div class="stat-icon">💰</div></div>
+            <span class="stat-value">₹18,450</span>
+            <span class="stat-growth">Direct farm gate earnings</span>
+        </div>
+        <div class="stat">
+            <div class="stat-top"><span class="stat-label">TRANSPORT SAVINGS</span><div class="stat-icon">🚚</div></div>
+            <span class="stat-value" style="color:#1e6de0">₹3,420</span>
+            <span class="stat-growth">62% average freight savings</span>
+        </div>
+        <div class="stat">
+            <div class="stat-top"><span class="stat-label">ESTIMATED ADDITIONAL INCOME</span><div class="stat-icon">📈</div></div>
+            <span class="stat-value" style="color:#14703a">+₹5,680</span>
+            <span class="stat-growth">+44.5% vs Mandi intermediaries</span>
+        </div>
+    </div>
+
+    <div class="analytics-grid">
+        <div class="card">
+            <div class="card-header"><h3>🌱 Crop Performance & Margins</h3></div>
+            <div class="bar">
+                <div class="bar-label"><span>🍅 Tomato (450 kg sold • Avg ₹32/kg)</span><b>82%</b></div>
+                <div class="bar-track"><div class="bar-fill" style="width:82%"></div></div>
+            </div>
+            <div class="bar">
+                <div class="bar-label"><span>🧅 Onion (300 kg sold • Avg ₹28/kg)</span><b>68%</b></div>
+                <div class="bar-track"><div class="bar-fill" style="width:68%"></div></div>
+            </div>
+            <div class="bar">
+                <div class="bar-label"><span>🍌 Banana (250 kg sold • Avg ₹38/kg)</span><b>91%</b></div>
+                <div class="bar-track"><div class="bar-fill" style="width:91%"></div></div>
+            </div>
+            <div class="bar">
+                <div class="bar-label"><span>🌶️ Chilli (80 kg sold • Avg ₹118/kg)</span><b>74%</b></div>
+                <div class="bar-track"><div class="bar-fill" style="width:74%"></div></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><h3>🤖 Decision Intelligence Insights</h3></div>
+            <div class="tip">📈 <b>Tomato direct buyer demand</b> expected to rise <b>12%</b> this week due to regional festival orders in Coimbatore.</div>
+            <div class="tip" style="margin-top:10px">💰 <b>Best selling day:</b> Tuesday & Friday mornings fetch +₹2.50/kg higher direct quotes.</div>
+            <div class="tip" style="margin-top:10px">🚚 <b>Shared Logistics Optimization:</b> Consolidating 2 shipments on the Pollachi-Coimbatore corridor will save an extra <b>₹320</b> this week.</div>
+        </div>
+    </div>
+</section>
+
+<!-- 11. WEATHER -->
+<section id="weather" class="page hidden">
+    <div class="page-title">
+        <small>FARM INTELLIGENCE</small>
+        <h2>Weather Intelligence</h2>
+    </div>
+
+    <div class="weather-grid">
+        <div class="weather-card"><small>TODAY</small><b>29°C</b><span>☁️ Partly Cloudy</span></div>
+        <div class="weather-card"><small>RAINFALL</small><b>12 mm</b><span>Moderate</span></div>
+        <div class="weather-card"><small>HUMIDITY</small><b>74%</b><span>Suitable</span></div>
+        <div class="weather-card"><small>WIND</small><b>14 km/h</b><span>Normal</span></div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+        <div class="tip">
+            🌾 <b>AI Farming Alert</b><br><br>
+            Moderate rainfall expected. Consider delaying tomato & chilli harvest by 12–18 hours for better crop moisture control and extended post-harvest shelf life.
+        </div>
+    </div>
+</section>
+
+<!-- 12. CUSTOMER PLACE ORDER -->
+<section id="customer" class="page hidden">
+    <div class="customer-hero">
+        <h1>🛒 Customer AI Order Center</h1>
+        <p>Customers and commercial buyers can directly place an order by describing what they need. AgriMithra identifies the crop, quantity, fair price, matches a nearby verified farmer, and arranges logistics automatically.</p>
+        <div class="customer-buttons">
+            <button class="secondary" onclick="openCustomerOrder()">＋ Place Order</button>
+            <button class="secondary" onclick="shareCustomerOrder()">📤 Share Order via WhatsApp</button>
+        </div>
+    </div>
+
+    <div class="customer-grid">
+        <div class="card">
+            <div class="card-header"><h3>📝 Customer Requirement</h3></div>
+            <div class="form-group">
+                <label class="form-label">What do you need?</label>
+                <textarea id="customerRequest" class="input" placeholder="Example: I need 200 kg tomato at ₹35 per kg for delivery to Coimbatore"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Customer / Business Name</label>
+                <input id="customerName" class="input" value="Guest Farmer">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Delivery Location</label>
+                <input id="customerLocation" class="input" value="Coimbatore">
+            </div>
+            <button class="primary full" onclick="placeCustomerOrder()">🛒 Place Order & Let AI Match Farmer</button>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>🤖 AI Order Matching & Fulfillment</h3>
+                <small>Automatic fulfillment</small>
+            </div>
+            <div id="aiOrderResult">
+                <div class="ai-understanding">
+                    <h4>Ready to receive order</h4>
+                    <p style="font-size:10px;color:#748078;line-height:1.6">
+                        Enter a requirement such as:<br><br>
+                        <b>“Need 200 kg tomato at ₹35/kg in Coimbatore”</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 13. CUSTOMER ORDERS -->
+<section id="customerOrders" class="page hidden">
+    <div class="page-title">
+        <small>CUSTOMER ACCOUNT</small>
+        <h2>Customer Orders</h2>
+        <p>Track orders placed through AgriMithra.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>📦 Order History</h3>
+            <button class="primary" onclick="showPage('customer')">＋ New Order</button>
+        </div>
+        <div id="customerOrderHistory"></div>
+    </div>
+</section>
+
+<!-- 14. AI FULFILLMENT -->
+<section id="aiorders" class="page hidden">
+    <div class="page-title">
+        <small>AUTOMATED SUPPLY CHAIN</small>
+        <h2>AI Order Fulfillment Flow</h2>
+        <p>Customer Requirement → AI Extraction → Direct Farmer Match → Shared Logistics → Delivery.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><h3>🤖 How AgriMithra Fulfills Orders Directly</h3></div>
+        <div class="steps">
+            <div class="step"><div class="step-icon">🧑</div><b>1. Buyer Request</b><small>Natural language requirement</small></div>
+            <div class="step"><div class="step-icon">🧠</div><b>2. AI Parsing</b><small>Crop, quantity, price parsed</small></div>
+            <div class="step"><div class="step-icon">🌾</div><b>3. Farmer Match</b><small>Best farm matched directly</small></div>
+            <div class="step"><div class="step-icon">🚚</div><b>4. Shared Logistics</b><small>Pooled mini-truck assigned</small></div>
+            <div class="step"><div class="step-icon">✅</div><b>5. Direct Delivery</b><small>Delivered & UPI settled</small></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><h3>📦 Recent AI Fulfilled Direct Orders</h3></div>
+        <div id="aiOrdersList"></div>
+    </div>
+</section>
+
+</div>
+</main>
+
+<!-- MODAL 1: LISTING MODAL -->
+<div class="modal-bg" id="listingModal">
+    <div class="modal">
+        <div class="modal-head">
+            <div><small>DIRECT FARM LISTING</small><h2>List Your Produce</h2></div>
+            <button class="close" onclick="closeListing()">×</button>
+        </div>
+
+        <div class="voice-listen">
+            <div style="font-size:28px">🎙️</div>
+            <div class="voice-listen-info">
+                <b>Speak produce details in English or Tamil</b>
+                <p>Example: “Tomato 200 kg 35 rupees”</p>
+                <div class="languages">
+                    <button class="active" onclick="setVoiceLanguage('en-IN',this)">English</button>
+                    <button onclick="setVoiceLanguage('ta-IN',this)">தமிழ்</button>
+                </div>
+            </div>
+            <button class="primary" id="voiceBtn" onclick="startListingVoice()">🎙️</button>
+        </div>
+
+        <div class="voice-status" id="voiceStatus"></div>
+
+        <label class="form-label">Produce / Crop</label>
+        <input id="cropName" class="input" value="Tomato" placeholder="Tomato">
+
+        <div class="form-grid" style="margin-top:10px;">
+            <div>
+                <label class="form-label">Quantity (kg)</label>
+                <input id="cropQty" type="number" class="input" value="100">
+            </div>
+            <div>
+                <label class="form-label">Quality / Grade</label>
+                <select id="cropGrade" class="input">
+                    <option value="A">Grade A (Premium)</option>
+                    <option value="B">Grade B (Standard)</option>
+                    <option value="C">Grade C (Local)</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="margin-top:10px;">
+            <label class="form-label">Your Selling Price (₹/kg)</label>
+            <input id="cropPrice" type="number" class="input" value="34">
+        </div>
+
+        <div class="tip" style="margin-top:10px;">
+            🤖 <b>Smart Price Guidance:</b> Recommended direct range: <b>₹31 – ₹35/kg</b> (Mandi pays ₹18/kg).
+        </div>
+
+        <div style="margin-top:10px;">
+            <label class="form-label">Farm Location</label>
+            <input id="cropLocation" class="input" value="Pollachi, Tamil Nadu">
+        </div>
+
+        <button class="primary full" onclick="publishListing()">🌱 Publish Produce Directly</button>
+    </div>
+</div>
+
+<!-- MODAL 2: VOICE CONFIRMATION MODAL -->
+<div class="modal-bg" id="voiceConfirmModal">
+    <div class="modal" style="width:480px;">
+        <div class="modal-head">
+            <div><small style="color:#1b743e;font-weight:800">VOICE SELLING RECOGNITION</small><h2>Confirm Your Listing</h2></div>
+            <button class="close" onclick="closeVoiceConfirmModal()">×</button>
+        </div>
+
+        <div style="padding:14px;background:#f2faf0;border-radius:12px;border:1px solid #cce8d0;margin-bottom:14px;">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">🗣️ Transcript Recognized:</div>
+            <b id="voiceTranscriptDisplay" style="font-size:12px;color:#126c36">“Enakku 200 kilo tomato irukku, kilo 32 rupees-ku sell panna poren”</b>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Crop Detected</label>
+            <input id="voiceConfirmCrop" class="input">
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="form-label">Quantity (kg)</label>
+                <input id="voiceConfirmQty" type="number" class="input">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Price (₹/kg)</label>
+                <input id="voiceConfirmPrice" type="number" class="input">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Location</label>
+            <input id="voiceConfirmLocation" class="input" value="Pollachi, Tamil Nadu">
+        </div>
+
+        <div class="tip">
+            ⚠️ <b>Verification Step:</b> Please check the details above before publishing. AgriMithra never publishes voice listings automatically without your explicit confirmation.
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:14px;">
+            <button class="secondary" style="flex:1" onclick="closeVoiceConfirmModal()">Edit / Cancel</button>
+            <button class="primary" style="flex:1.5" onclick="executeVoicePublish()">✅ Confirm & Publish</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL 3: WHY THIS PRICE MODAL -->
+<div class="modal-bg" id="whyPriceModal">
+    <div class="modal" style="width:620px;">
+        <div class="modal-head">
+            <div><small style="color:#1b743e;font-weight:800">TRANSPARENT PRICING ENGINE</small><h2 id="whyPriceTitle">Why this price? — Tomato</h2></div>
+            <button class="close" onclick="closeWhyPriceModal()">×</button>
+        </div>
+
+        <div style="padding:14px;background:#eef8eb;border-radius:14px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;">
+            <div>
+                <span style="font-size:9px;color:var(--muted);font-weight:800;">RECOMMENDED DIRECT PRICE</span>
+                <div style="font-size:26px;font-weight:800;color:#13783f;" id="whyPriceRange">₹31 – ₹35 / kg</div>
+            </div>
+            <div style="text-align:right">
+                <span style="font-size:9px;color:var(--muted);font-weight:800;">MANDI BASELINE</span>
+                <div style="font-size:18px;font-weight:800;color:#6b8072;" id="whyPriceMandi">₹18 / kg</div>
+            </div>
+        </div>
+
+        <p style="font-size:11px;color:var(--muted);margin-bottom:12px;">
+            AgriMithra pricing is 100% explainable and rule-based. Below are the exact market forces, logistics offsets, and quality adjustments computed for this crop:
+        </p>
+
+        <div id="whyFactorsList"></div>
+
+        <div style="margin-top:16px;text-align:right;">
+            <button class="primary" onclick="closeWhyPriceModal()">Got It, Thanks!</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL 4: SEND OFFER MODAL -->
+<div class="modal-bg" id="sendOfferModal">
+    <div class="modal" style="width:480px;">
+        <div class="modal-head">
+            <div><small style="color:#1b743e;font-weight:800">DIRECT B2B NEGOTIATION</small><h2 id="sendOfferBuyerName">Send Offer to Buyer</h2></div>
+            <button class="close" onclick="closeSendOfferModal()">×</button>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Crop</label>
+            <input id="modalOfferCrop" class="input" readonly>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="form-label">Quantity (kg)</label>
+                <input id="modalOfferQty" type="number" class="input" value="100">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Your Offered Price (₹/kg)</label>
+                <input id="modalOfferPrice" type="number" class="input" value="34">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Note for Buyer</label>
+            <textarea id="modalOfferMessage" class="input" style="min-height:70px;" placeholder="Freshly harvested Grade A produce with door delivery..."></textarea>
+        </div>
+
+        <button class="primary full" onclick="submitCustomOffer()">🤝 Send Direct Offer to Buyer</button>
+    </div>
+</div>
+
+<!-- MODAL 5: CUSTOMER ORDER MODAL -->
+<div class="modal-bg" id="customerModal">
+    <div class="modal">
+        <div class="modal-head">
+            <div><small>AI CUSTOMER ORDER</small><h2>Place Your Order</h2></div>
+            <button class="close" onclick="closeCustomerOrder()">×</button>
+        </div>
+
+        <label class="form-label">Customer Name</label>
+        <input id="modalCustomerName" class="input" value="Guest Farmer">
+
+        <div style="margin-top:10px;">
+            <label class="form-label">What do you need?</label>
+            <textarea id="modalCustomerRequest" class="input" placeholder="Example: Need 200 kg tomato at ₹35 per kg"></textarea>
+        </div>
+
+        <div style="margin-top:10px;">
+            <label class="form-label">Delivery Location</label>
+            <input id="modalCustomerLocation" class="input" value="Coimbatore">
+        </div>
+
+        <button class="primary full" onclick="submitCustomerOrder()">🛒 Place Order</button>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- JAVASCRIPT LOGIC -->
+<script src="script.js"></script>
+
+</body>
+</html>
+ 
